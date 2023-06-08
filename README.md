@@ -1,10 +1,9 @@
 # WorkOasis </br>
+</br>
 
 ## Figma
 https://www.figma.com/file/tBLcveCdIJGKJp2NjCLcUF/WorkOasis?type=design&node-id=0%3A1&t=jFAEwzPg5HV3L7B2-1 </br>
 
-## ER図
-https://drive.google.com/file/d/1gqpZU4IJHHe6HLbS_6KdteThCPsDrGwR/view?usp=sharing</br>
 
 ## サービス概要
 「WorkOasis」は、ユーザーが地図上に作業スポットを自身で登録できるサービスです。ユーザーはお気に入りのカフェやコワーキングスペースなどをマップ上にピンポイントで表示し、他のユーザーと場所の情報を共有できます。これにより、ユーザー同士がおすすめの作業スポットを共有し合い、効率的で快適な作業環境を見つけることができます。</br>
@@ -30,7 +29,6 @@ https://drive.google.com/file/d/1gqpZU4IJHHe6HLbS_6KdteThCPsDrGwR/view?usp=shari
 - 未ログインユーザー
   - マップ画面で登録された作業スペースを閲覧することができる
     - 利用者が登録した作業スペースが表示される
-    - 詳細画面で作業スペースの情報を閲覧することができる
   - ログイン画像に訪れたユーザーがロゴイン、新規登録することができる。
     - ユーザー名、メールアドレス、パスワードでログインできる
     - Googleでソーシャルログインをすることができる。
@@ -40,6 +38,7 @@ https://drive.google.com/file/d/1gqpZU4IJHHe6HLbS_6KdteThCPsDrGwR/view?usp=shari
   - 作業スペースに評価、レビューをすることができる。
     - 星のイラストで評価（1~5)、コメント（フリーテキスト）
   - 作業スペースをお気に入りできる。
+  - プロフィールページにて、自身のプロフィールを変更することができる。
 </br>
 </br>
 
@@ -50,11 +49,11 @@ https://drive.google.com/file/d/1gqpZU4IJHHe6HLbS_6KdteThCPsDrGwR/view?usp=shari
 </br>
 
 ## スケジュール
-企画〜技術調査:6/1 〆切
-README~ER図作成:6/4 〆切
-メイン機能実装:6/4 - 7/9 〆切
-β版をRUNTEQ内リリース(MVP):7/9 〆切
-本番リリース:７月下旬</br>
+- 企画〜技術調査:6/1 〆切
+- README~ER図作成:6/4 〆切
+- メイン機能実装:6/4 - 7/9 〆切
+- β版をRUNTEQ内リリース(MVP):7/9 〆切
+- 本番リリース:７月下旬</br>
 </br>
 
 ## 技術選定
