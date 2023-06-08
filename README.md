@@ -6,7 +6,7 @@ https://www.figma.com/file/tBLcveCdIJGKJp2NjCLcUF/WorkOasis?type=design&node-id=
 ## ER図
 https://drive.google.com/file/d/1gqpZU4IJHHe6HLbS_6KdteThCPsDrGwR/view?usp=sharing</br>
 
-##　サービス概要
+## サービス概要
 「WorkOasis」は、ユーザーが地図上に作業スポットを自身で登録できるサービスです。ユーザーはお気に入りのカフェやコワーキングスペースなどをマップ上にピンポイントで表示し、他のユーザーと場所の情報を共有できます。これにより、ユーザー同士がおすすめの作業スポットを共有し合い、効率的で快適な作業環境を見つけることができます。</br>
 </br>
 
