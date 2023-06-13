@@ -67,6 +67,8 @@ group :development do
   gem "solargraph"
   gem "annotate"
   gem "sassc"
+  gem 'cssbundling-rails'
+  gem 'jsbundling-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
