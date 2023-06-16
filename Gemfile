@@ -69,6 +69,7 @@ group :development do
   gem "sassc"
   gem 'cssbundling-rails'
   gem 'jsbundling-rails'
+  gem 'sorcery'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
