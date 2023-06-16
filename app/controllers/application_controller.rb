@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     redirect_to new_sessions, danger: "ログインしてください"
+  end
 end

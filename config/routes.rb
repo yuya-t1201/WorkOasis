@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resource :sessions, only: [:new, :create, :destroy]
+  get 'login', to: 'sessions#new'    # ログイン画面の表示
+  post 'login', to: 'sessions#create' # ログインの処理
+  delete 'logout', to: 'sessions#destroy' # ログアウトの処理
+
 end
