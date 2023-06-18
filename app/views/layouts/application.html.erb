@@ -11,7 +11,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-primary w-screen h-screen">
+      <%= yield %>
+    
   </body>
 </html>
