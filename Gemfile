@@ -70,6 +70,8 @@ group :development do
   gem 'cssbundling-rails'
   gem 'jsbundling-rails'
   gem 'sorcery'
+  gem 'omniauth-google-oauth2'
+  gem 'config'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
