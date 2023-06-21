@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
     def new; end
   
     def create
-      user = User.authenticate(params[:email], params[:password])
+      @user = User.authenticate(params[:email], params[:password])
   
-      if user
-        login(user)
+      if @user
+        login(@user)
         redirect_to root_path, notice: 'ログインに成功しました。'
       else
-        flash.now[:alert] = 'メールアドレスまたはパスワードが正しくありません。'
-        render :new
+        flash.now[:alert] = 'ログインに失敗しました'
+        render :new, status: :unprocessable_entity
       end
     end
   
