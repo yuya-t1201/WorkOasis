@@ -72,6 +72,8 @@ group :development do
   gem 'sorcery'
   gem 'omniauth-google-oauth2'
   gem 'config'
+  gem 'gmaps4rails'
+  gem 'geocoder'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
