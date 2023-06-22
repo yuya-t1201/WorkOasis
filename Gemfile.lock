@@ -155,8 +155,10 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -404,6 +406,8 @@ DEPENDENCIES
   cssbundling-rails
   debug
   factory_bot_rails
+  geocoder
+  gmaps4rails
   importmap-rails
   jbuilder
   jsbundling-rails
