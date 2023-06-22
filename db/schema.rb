@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_18_130417) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_072542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_130417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "title", limit: 100, null: false
+    t.string "address", limit: 255, null: false
+    t.integer "price", default: 0
+    t.string "facilities", limit: 255, default: [], array: true
+    t.text "recommendation"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
