@@ -1,17 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Google Maps</title>
+<body class="bg-primary">
+  <div class="container mx-auto py-8">
+    <div class="mb-8 flex justify-center">
+      <input
+        type="text"
+        id="search-input"
+        class="w-96 rounded-lg border border-gray-300 px-4 py-2 bg-white"
+        placeholder="検索するカフェのキーワードを入力してください"
+      />
+      <button
+        id="search-button"
+        class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-lg"
+      >
+        検索
+      </button>
+    </div>
+
+    <div class="flex justify-center">
+      <div id="map" class="w-full h-screen mb-4"></div>
+    </div>
+  </div>
+
   <style>
     #map {
-      height: 400px;
+      height: calc(100vh - 10rem);
     }
   </style>
-  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY' %>
-  <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'maps' %>
-</head>
-<body>
-  <div id="map" class="w-full h-full"></div>
+
+
+  <script>
+    let map;
+    let searchInput;
+    let searchButton;
+
+    function initMap() {
+      const tokyoStation = { lat: 35.681240, lng: 139.766115 };
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: tokyoStation,
+        zoom: 12
+      });
+
+      const marker = new google.maps.Marker({
+        position: tokyoStation,
+        map: map
+      });
+
+      searchInput = document.getElementById('search-input');
+      searchButton = document.getElementById('search-button');
+
+      searchButton.addEventListener('click', searchCafe);
+    }
+
+    function searchCafe() {
+      const keyword = searchInput.value;
+
+      if (keyword === '') {
+        alert('検索キーワードを入力してください');
+        return;
+      }
+
+      const request = {
+        location: map.getCenter(),
+        radius: 5000,
+        keyword: keyword
+      };
+
+      const service = new google.maps.places.PlacesService(map);
+
+      service.nearbySearch(request, handleSearchResults);
+    }
+
+    function handleSearchResults(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    function createMarker(place) {
+      const marker = new google.maps.Marker({
+        position: place.geometry.location,
+        map: map,
+        title: place.name
+      });
+
+      const infowindow = new google.maps.InfoWindow({
+        content: place.name
+      });
+
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALLnOvcLorPuwL8pjRiw6Hy5-Nnj5PFQI&callback=initMap" async defer></script>
 </body>
-</html>
