@@ -111,6 +111,10 @@ GEM
     debug_inspector (1.1.0)
     deep_merge (1.2.2)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-configurable (1.0.1)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -155,8 +159,10 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -403,7 +409,10 @@ DEPENDENCIES
   config
   cssbundling-rails
   debug
+  dotenv-rails
   factory_bot_rails
+  geocoder
+  gmaps4rails
   importmap-rails
   jbuilder
   jsbundling-rails
