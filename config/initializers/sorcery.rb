@@ -160,8 +160,8 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Rails.application.credentials.dig(:google, :client_id)
   config.google.secret = Rails.application.credentials.dig(:google, :client_secret)
-  config.google.callback_url = "http://localhost:3000/users/auth/google/callback"
-  # config.google.user_info_mapping = {:email => "email", :username => "name"}
+  config.google.callback_url = Settings.sorcery[:google_callback_url]
+  # config.google.user_info_mapping = {:email => "email", :name => "name" }
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
@@ -543,7 +543,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`

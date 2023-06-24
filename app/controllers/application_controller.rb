@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :require_login
+  # before_action :require_login
 
   private
 
   def not_authenticated
-    redirect_to new_sessions, danger: "ログインしてください"
+    redirect_to login_path, danger: "ログインしてください"
   end
 end
