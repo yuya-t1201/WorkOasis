@@ -13,7 +13,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if controller_name != 'pages' %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <main class="bg-primary w-screen h-screen">
       <%= yield %>
     </main>
