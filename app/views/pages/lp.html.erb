@@ -1,0 +1,70 @@
+<div class="hero min-h-screen bg-primary">
+  <div class="hero-content flex items-center justify-center flex-col">
+    <h1 class="text-5xl font-bold">WorkOasis</h1>
+    <p class="text-xl mt-4">理想の作業環境を見つけるための究極のマップアプリ</p>
+  </div>
+</div>
+
+<div class="hero min-h-screen bg-neutral">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="mt-4"> 
+      <%= image_tag('cafe1.jpg', class: 'max-w-xl rounded-lg shadow-2xl') %>
+    </div>
+    <div class="mr-8 lg:mt-0 lg:ml-16">
+      <div class="text-4xl font-bold">
+        あなたのパーソナルな<br>作業スペースマップ
+      </div>
+      <div class="mt-8">
+        <p class="text-xl">
+          WorkOasisは、作業環境を探し求める人々のため</br>の革新的なマップアプリです。</br>カフェ、コワーキングスペース、図書館など</br>あなたが集中して作業できる理想的な場所を探しましょう。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero min-h-screen bg-accent">
+  <div class="hero-content flex-col lg:flex-row">
+    <div class="mt-4">
+      <%= image_tag('computer.jpg', class: 'max-w-xl rounded-lg shadow-2xl') %>
+    </div>
+    <div class="mt-8 lg:mt-0 lg:ml-16">
+      <div class="text-4xl font-bold">
+      ユーザーが登録する<br>作業スペース
+      </div>
+      <div class="mt-8">
+        <p class="text-xl">
+        WorkOasisでは、ユーザー自身がお気に入りの</br>作業スペースを登録することができます。</br>あなたの好みやニーズに合わせた場所をマップ上に</br>ピンポイントで表示します。</br>他のユーザーと場所の情報を共有しましょう。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="hero min-h-screen bg-secondary">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="mt-4"> 
+      <%= image_tag('library.jpg', class: 'max-w-xl rounded-lg shadow-2xl') %>
+    </div>
+    <div class="mr-16 lg:mt-0 lg:ml-8">
+      <div class="text-4xl font-bold">
+      レビューと評価で<br>信頼性の高い情報
+      </div>
+      <div class="mt-8">
+        <p class="text-xl">
+        WorkOasisでは、ユーザーが作業スペースに対して<br>評価とレビューを投稿することができます。<br>他のユーザーの意見や体験を参考にして<br>最適な作業環境を見つけましょう。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex items-center justify-center min-h-screen bg-white">
+  <div class="max-w-3xl">
+    <%= link_to login_path, class: "inline-block bg-white text-black text-xl font-bold py-6 px-10 rounded-lg border border-black hover:bg-gray-200" do %>
+      さあ、始めよう！
+    <% end %>
+  </div>
+</div>

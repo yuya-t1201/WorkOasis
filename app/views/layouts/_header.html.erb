@@ -1,6 +1,14 @@
 <div class="navbar bg-secondary">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">WorkOasis</a>
+    <% if logged_in? %>
+      <%= link_to workspaces_path, class: "btn btn-ghost normal-case text-xl" do %>
+        WorkOasis
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "btn btn-ghost normal-case text-xl" do %>
+        WorkOasis
+      <% end %>
+    <% end %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
