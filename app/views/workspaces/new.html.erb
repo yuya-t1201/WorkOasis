@@ -1,42 +1,40 @@
 <div class="flex items-center justify-center min-h-screen">
   <div class="w-full max-w-md">
-    <h1 class="text-2xl font-bold text-center mb-4">ワークスペース登録</h1>
+    <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">ワークスペース登録</h1>
     <%= form_with model: @workspace, url: workspaces_path, html: { multipart: true } do |f| %>
-        <div class="my-4">
-          <%= f.label :名称, class: "block font-semibold" %>
-          <%= f.text_field :name, class: "input w-full " %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.label :住所, class: "block font-semibold" %>
-          <%= f.text_field :address, class: "input w-full " %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.label :tags, "機能・設備", class: "block font-semibold" %>
-          <%= f.text_field :tags, class: "input w-full " %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.label :金額帯, class: "block font-semibold" %>
-          <%= f.select :price, Workspace.prices, {}, class: "input w-full" %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.label :おすすめポイント, class: "block font-semibold" %>
-          <%= f.text_area :recommendation, class: "input w-full h-32 " %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.label :写真, class: "block font-semibold" %>
-          <%= f.file_field :image, class: "mt-1" %>
-        </div>
-      
-        <div class="my-4">
-          <%= f.submit "登録", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
-        </div>
-      <% end %>
-      
-    
+      <div class="my-4">
+        <%= f.label :名称, class: "block font-semibold" %>
+        <%= f.text_field :name, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :住所, class: "block font-semibold" %>
+        <%= f.text_field :address, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :tags, "機能・設備", class: "block font-semibold" %>
+        <%= f.text_field :tags, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :金額帯, class: "block font-semibold" %>
+        <%= f.select :price, Workspace.prices, {}, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :おすすめポイント, class: "block font-semibold" %>
+        <%= f.text_area :recommendation, class: "input w-full h-32" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :写真, class: "block font-semibold" %>
+        <%= f.file_field :workspace_image, class: "mt-1", cache: true %>
+      </div>
+
+      <div class="my-4">
+        <%= f.submit "登録", class: "btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white" %>
+      </div>
+    <% end %>
   </div>
 </div>
