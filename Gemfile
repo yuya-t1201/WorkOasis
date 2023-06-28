@@ -75,6 +75,8 @@ group :development do
   gem 'gmaps4rails'
   gem 'geocoder'
   gem 'dotenv-rails'
+  gem 'carrierwave'
+  gem 'mini_magick'
 
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

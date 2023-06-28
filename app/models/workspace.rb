@@ -2,16 +2,17 @@
 #
 # Table name: workspaces
 #
-#  id             :bigint           not null, primary key
-#  address        :string(255)      not null
-#  facilities     :string(255)      default([]), is an Array
-#  latitude       :float
-#  longitude      :float
-#  price          :integer          default(0)
-#  recommendation :text
-#  title          :string(100)      not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :bigint           not null, primary key
+#  address         :string(255)      not null
+#  facilities      :string(255)      default([]), is an Array
+#  latitude        :float
+#  longitude       :float
+#  price           :integer          default("0~500円")
+#  recommendation  :text
+#  title           :string(100)      not null
+#  workspace_image :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 class Workspace < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
@@ -19,6 +20,8 @@ class Workspace < ApplicationRecord
   validates :facilities, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :recommendation, presence: true
+
+  mount_uploader :image, ImageUploader
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

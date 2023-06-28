@@ -2,16 +2,17 @@
 #
 # Table name: workspaces
 #
-#  id             :bigint           not null, primary key
-#  address        :string(255)      not null
-#  facilities     :string(255)      default([]), is an Array
-#  latitude       :float
-#  longitude      :float
-#  price          :integer          default(0)
-#  recommendation :text
-#  title          :string(100)      not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :bigint           not null, primary key
+#  address         :string(255)      not null
+#  facilities      :string(255)      default([]), is an Array
+#  latitude        :float
+#  longitude       :float
+#  price           :integer          default("0~500円")
+#  recommendation  :text
+#  title           :string(100)      not null
+#  workspace_image :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 require 'rails_helper'
 
