@@ -4,7 +4,7 @@
     <%= form_with model: @workspace, url: workspaces_path, html: { multipart: true } do |f| %>
       <div class="my-4">
         <%= f.label :名称, class: "block font-semibold" %>
-        <%= f.text_field :name, class: "input w-full" %>
+        <%= f.text_field :title, class: "input w-full" %>
       </div>
 
       <div class="my-4">
@@ -29,7 +29,8 @@
 
       <div class="my-4">
         <%= f.label :写真, class: "block font-semibold" %>
-        <%= f.file_field :workspace_image, class: "mt-1", cache: true %>
+        <div id="image_preview" class="mt-2 flex flex-wrap gap-4"></div>
+        <%= f.file_field :workspace_images, class: "mt-1", id: "workspace_images", cache: true, multiple: true %>
       </div>
 
       <div class="my-4">
@@ -38,3 +39,29 @@
     <% end %>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('#workspace_images').change(function() {
+      var input = $(this)[0];
+      if (input.files && input.files.length > 0) {
+        $('#image_preview').empty();
+
+        Array.from(input.files).forEach(function(file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var imagePreview = $('<div>').addClass('relative mx-2 mt-2');
+            var image = $('<img>').attr('src', e.target.result).addClass('max-w-xs max-h-48').css('object-fit', 'cover');
+            var removeButton = $('<button>').addClass('absolute top-0 right-0 p-2 bg-red-500 rounded-full text-white hover:bg-red-600').text('削除').click(function() {
+              $(this).parent().remove();
+            });
+
+            imagePreview.append(image);
+            imagePreview.append(removeButton);
+            $('#image_preview').append(imagePreview);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    });
+  });
+</script>
