@@ -18,6 +18,6 @@ class WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:name, :address, :tags, :price, :recommendation, :workspace_image, :workspace_image_cache)
+    params.require(:workspace).permit(:title, :address, :tags, :price, :recommendation, {workspace_images: []}, :workspace_image_cache)
   end
 end
