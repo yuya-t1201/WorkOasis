@@ -13,15 +13,24 @@
 #  workspace_image :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
+#
+# Indexes
+#
+#  index_workspaces_on_user_id  (user_id)
 #
 class Workspace < ApplicationRecord
+  belongs_to :user
+
+  has_many :workspace_tags, dependent: :destroy
+  has_many :tags, through: :workspace_tags, dependent: :destroy
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :address, presence: true
   validates :facilities, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :recommendation, presence: true
 
-  mount_uploader :image, ImageUploader
+  mount_uploaders :workspace_image, ImageUploader
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -33,5 +42,7 @@ class Workspace < ApplicationRecord
     '1500~2000円': 3,
     '2000円以上': 4
   }
+
+
 end
 

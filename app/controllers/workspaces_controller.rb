@@ -8,8 +8,10 @@ class WorkspacesController < ApplicationController
 
   def create
     @workspace = Workspace.new(workspace_params)
+    @workspace.user_id = current_user.id
+  
     if @workspace.save
-      redirect_to workspaces_path, notice: "ワークスペースが登録されました。"
+      redirect_to workspaces_path, notice: 'ワークスペースが登録されました'
     else
       render :new
     end
@@ -18,6 +20,6 @@ class WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:title, :address, :tags, :price, :recommendation, {workspace_images: []}, :workspace_image_cache)
+    params.require(:workspace).permit(:title, :address, :price, :recommendation)
   end
 end

@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center min-h-screen">
   <div class="w-full max-w-md">
     <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">ワークスペース登録</h1>
-    <%= form_with model: @workspace, url: workspaces_path, html: { multipart: true } do |f| %>
+    <%= form_with model: @workspace, html: { multipart: true } do |f| %>
       <div class="my-4">
         <%= f.label :名称, class: "block font-semibold" %>
         <%= f.text_field :title, class: "input w-full" %>
@@ -13,13 +13,13 @@
       </div>
 
       <div class="my-4">
-        <%= f.label :tags, "機能・設備", class: "block font-semibold" %>
-        <%= f.text_field :tags, class: "input w-full" %>
+        <%= f.label :機能・設備, class: "block font-semibold" %>
+        <%= f.text_field :tags, value: @tag_list, class: "input w-full" %>
       </div>
 
       <div class="my-4">
         <%= f.label :金額帯, class: "block font-semibold" %>
-        <%= f.select :price, Workspace.prices, {}, class: "input w-full" %>
+        <%= f.select :price, Workspace.prices.keys, {}, class: "input w-full" %>
       </div>
 
       <div class="my-4">
@@ -30,7 +30,7 @@
       <div class="my-4">
         <%= f.label :写真, class: "block font-semibold" %>
         <div id="image_preview" class="mt-2 flex flex-wrap gap-4"></div>
-        <%= f.file_field :workspace_images, class: "mt-1", id: "workspace_images", cache: true, multiple: true %>
+        <%= f.file_field :workspace_image, class: "mt-1", multiple: true %>
       </div>
 
       <div class="my-4">
@@ -39,9 +39,10 @@
     <% end %>
   </div>
 </div>
+
 <script>
   $(document).ready(function() {
-    $('#workspace_images').change(function() {
+    $('#workspace_image').change(function() {
       var input = $(this)[0];
       if (input.files && input.files.length > 0) {
         $('#image_preview').empty();
