@@ -1,0 +1,74 @@
+<div class="flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md mt-16">
+    <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">ワークスペース登録</h1>
+    <%= form_with model: @workspace, local: true do |f| %>
+      
+      <% if @workspace.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>
+          <ul>
+            <% @workspace.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="my-4">
+        <%= f.label :名称, class: "block font-semibold" %>
+        <%= f.text_field :title, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :住所, class: "block font-semibold" %>
+        <%= f.text_field :address, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :金額帯, class: "block font-semibold" %>
+        <%= f.select :price, Workspace.prices, {}, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :おすすめポイント, class: "block font-semibold" %>
+        <%= f.text_area :recommendation, class: "input w-full h-32" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label :写真, class: "block font-semibold" %>
+        <div id="image_preview" class="image-preview">
+          <% if @workspace.workspace_image.present? %>
+            <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
+          <% end %>
+        </div>
+        <%= f.file_field :workspace_image, id: "workspace_image", class: "mt-1" %>
+      </div>
+  
+      <div class="my-4">
+        <%= f.submit "登録", class: "btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // 画像選択時にプレビューを表示する
+    $('#workspace_image').on('change', function (e) {
+      var input = $(this)[0];
+      if (input.files && input.files[0]) {
+        $('#image_preview').empty();
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var imagePreview = $('<div>').addClass('relative mx-2 mt-2');
+          var image = $('<img>').attr('src', e.target.result).addClass('max-w-xs max-h-48').css('object-fit', 'cover');
+
+          imagePreview.append(image);
+          $('#image_preview').append(imagePreview);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  });
+</script>
