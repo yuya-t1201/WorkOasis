@@ -8,20 +8,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
-  <body class="bg-primary">
+  <body class="bg-primary min-h-screen">
     <% if controller_name != 'pages' %>
       <%= render 'layouts/header' %>
     <% end %>
-    <main class="min-h-screen">
-      <div class="container mx-auto">
-        <%= yield %>
-      </div>
-    </main>
+      <%= yield %>
   </body>
 
 </html>

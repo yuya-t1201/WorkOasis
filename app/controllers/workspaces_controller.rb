@@ -7,12 +7,17 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.new
   end
 
+  def show
+    @workspace = Workspace.find(params[:id])
+  end
+
+
   def create
     @workspace = Workspace.new(workspace_params)
     @workspace.user = current_user
 
     if @workspace.save
-      redirect_to workspaces_path, notice: 'ワークスペースが登録されました'
+      redirect_to workspace_path(@workspace), notice: 'ワークスペースが登録されました'
     else
       puts @workspace.errors.inspect  # ログにエラーメッセージを出力
       render :new
