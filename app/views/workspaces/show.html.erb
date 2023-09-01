@@ -1,16 +1,18 @@
 <div class="container mx-auto px-4 h-full ">
 
   <div class="flex items-center justify-center m-16">
-    <h2 class="font-semibold text-2xl "><%= @workspace.title %></h2>
+    <div class="border-l-4 border-indigo-500 pl-4">
+      <h2 class="font-main text-2xl "><%= @workspace.title %></h2>
+    </div>
   </div>
 
   <div class="flex flex-col md:flex-row md:gap-4">
-  <div class="md:w-1/2 md:pr-4">
-    <div class="my-8   border-b-indigo-500">
-      <p class="font-semibold text-lg">
-        <i class="far fa-house"></i> 住所:
-      </p>
-  <p><%= @workspace.address %></p>
+    <div class="md:w-1/2 md:pr-4">
+      <div class="my-8   border-b-indigo-500">
+        <p class="font-semibold text-lg">
+          <i class="far fa-house"></i> 住所:
+        </p>
+    <p><%= @workspace.address %></p>
     </div>
 
     <div class="my-8">
@@ -35,11 +37,6 @@
   </div>
 </div>
 
-
-  <div class="my-4 text-center">
-    <p class="font-semibold">評価:</p>
-    <!-- 評価を表示するための星アイコンを追加する部分 -->
-  </div>
 </div>
 
 
