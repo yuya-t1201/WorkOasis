@@ -34,32 +34,8 @@ class Workspace < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  enum price: {
-    '0~500円': 0,
-    '500~1000円': 1,
-    '1000~1500円': 2,
-    '1500~2000円': 3,
-    '2000円以上': 4
+  enum price: { '1~500': 0, '500~1000': 1, '1000~1500': 3, '1500~2000': 4, '2000~': 5
   }
-
-  def price=(price_str)
-    self[:price] = Workspace.prices[price_str]
-  end
-
-  def save_tag(sent_tags)
-    current_tags = tags.pluck(:name) unless tags.nil?
-    sent_tags = sent_tags.uniq
-    old_tags = current_tags - sent_tags
-    new_tags = sent_tags - current_tags
-    old_tags.each do |old|
-      tags.delete Tag.find_by(name: old)
-    end
-
-    new_tags.each do |new|
-      new_workspace_tag = Tag.find_or_create_by(name: new)
-      tags << new_workspace_tag
-    end
-  end
 
 end
 

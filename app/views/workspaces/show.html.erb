@@ -1,0 +1,62 @@
+<div class="container mx-auto px-4 h-full ">
+
+  <div class="flex items-center justify-center m-16">
+    <div class="border-l-4 border-indigo-500 pl-4">
+      <h2 class="font-main text-2xl "><%= @workspace.title %></h2>
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row md:gap-4">
+    <div class="md:w-1/2 md:pr-4">
+      <div class="my-8   border-b-indigo-500">
+        <p class="font-semibold text-lg">
+          <i class="far fa-house"></i> 住所:
+        </p>
+    <p><%= @workspace.address %></p>
+    </div>
+
+    <div class="my-8">
+      <p class="font-semibold text-lg">金額帯:</p>
+      <p><%= @workspace.price %>円</p>
+    </div>
+
+    <div class="my-4">
+      <p class="font-semibold text-lg">おすすめポイント:</p>
+      <p><%= @workspace.recommendation %></p>
+    </div>
+
+    <div class="my-4">
+      <% if @workspace.workspace_image.present? %>
+        <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="my-4 text-center md:w-1/2">
+    <div id="map" class="w-full h-96"></div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+<script>
+  function initMap() {
+    const mapElement = document.getElementById('map');
+    const workspaceLatLng = { lat: <%= @workspace.latitude %>, lng: <%= @workspace.longitude %> };
+
+    const map = new google.maps.Map(mapElement, {
+      center: workspaceLatLng,
+      zoom: 15
+    });
+
+    const marker = new google.maps.Marker({
+      position: workspaceLatLng,
+      map: map,
+      title: '<%= @workspace.title %>'
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALLnOvcLorPuwL8pjRiw6Hy5-Nnj5PFQI&callback=initMap" async defer></script>

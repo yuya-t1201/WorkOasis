@@ -26,7 +26,7 @@
 
       <div class="my-4">
         <%= f.label :金額帯, class: "block font-semibold" %>
-        <%= f.select :price, Workspace.prices, {}, class: "input w-full" %>
+        <%= f.select :price, Workspace.prices.keys, {}, class: "input w-full" %>
       </div>
 
       <div class="my-4">
