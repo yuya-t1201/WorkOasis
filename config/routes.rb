@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "users/auth/google/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :workspaces
+  resources :workspaces do
+    get 'list', on: :collection
+  end
   # Defines the root path route ("/")
   root 'pages#lp'
 

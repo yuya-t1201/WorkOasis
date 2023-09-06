@@ -19,8 +19,17 @@ class WorkspacesController < ApplicationController
     if @workspace.save
       redirect_to workspace_path(@workspace), notice: 'ワークスペースが登録されました'
     else
-      puts @workspace.errors.inspect  # ログにエラーメッセージを出力
       render :new
+    end
+  end
+
+  def list
+    if params[:latest]
+      @workspaces = Workspace.latest
+    elsif params[:old]
+      @workspaces = Workspace.old
+    else
+    @workspaces = Workspace.all
     end
   end
 
