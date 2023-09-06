@@ -34,6 +34,9 @@ class Workspace < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created_at: :asc) }
+
   enum price: { '1~500': 0, '500~1000': 1, '1000~1500': 3, '1500~2000': 4, '2000~': 5
   }
 

@@ -24,7 +24,13 @@ class WorkspacesController < ApplicationController
   end
 
   def list
+    if params[:latest]
+      @workspaces = Workspace.latest
+    elsif params[:old]
+      @workspaces = Workspace.old
+    else
     @workspaces = Workspace.all
+    end
   end
 
   private
