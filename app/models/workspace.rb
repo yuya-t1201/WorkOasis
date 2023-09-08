@@ -7,7 +7,7 @@
 #  facilities      :string(255)      default([]), is an Array
 #  latitude        :float
 #  longitude       :float
-#  price           :integer          default("0~500円")
+#  price           :integer          default("1~500")
 #  recommendation  :text
 #  title           :string(100)      not null
 #  workspace_image :string
