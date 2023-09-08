@@ -1,0 +1,13 @@
+<body class="bg-gray-100">
+  <div class="max-w-xl mx-auto my-10 bg-white rounded-lg shadow-md p-5 text-center">
+    <% if current_user.avatar? %>
+      <%= image_tag current_user.avatar.variant(resize: "200x200").processed, class: "w-48 h-48 rounded-full mx-auto", alt: "Profile picture" %>
+    <% else %>
+      <%= image_tag "user_default.png", class: "w-48 h-48 rounded-full mx-auto", alt: "Default Profile picture" %>
+    <% end %>
+    <h2 class="text-3xl font-semibold mt-3"><%= current_user.name %></h2>
+    <p class="text-gray-600 mt-1 text-lg"><%= current_user.email %></p>
+    
+    <%= link_to '編集', edit_profile_path, class: 'btn btn-sm m-1 bg-neutral' %>
+  </div>
+</body>
