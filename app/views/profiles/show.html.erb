@@ -1,7 +1,7 @@
 <body class="bg-gray-100">
   <div class="max-w-xl mx-auto my-10 bg-white rounded-lg shadow-md p-5 text-center">
-    <% if current_user.avatar? %>
-      <%= image_tag current_user.avatar.variant(resize: "200x200").processed, class: "w-48 h-48 rounded-full mx-auto", alt: "Profile picture" %>
+    <% if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar.url, class: "w-48 h-48 rounded-full mx-auto" %>
     <% else %>
       <%= image_tag "user_default.png", class: "w-48 h-48 rounded-full mx-auto", alt: "Default Profile picture" %>
     <% end %>
@@ -10,4 +10,27 @@
     
     <%= link_to '編集', edit_profile_path, class: 'btn btn-sm m-1 bg-neutral' %>
   </div>
+
+  <div class="text-center">
+    <button id="toggle-workspaces" class="btn btn-sm m-1 bg-neutral">投稿したワークスペースを表示</button>
+  </div>
+  <% current_user.workspaces.each do |workspace| %>
+    <%= link_to workspace_path(workspace), class: "max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-3 text-center workspace-container flex flex-col items-center justify-center", style: "display: none;" do %>
+      <!-- Workspaceの情報を表示 -->
+      <h2 class="text-xl font-semibold mt-2"><%= workspace.title %></h2>
+      <!-- 他のWorkspace情報もここで表示できます -->
+    <% end %>
+  <% end %>
+
+
+  
 </body>
+
+<script>
+  $(document).ready(function() {
+    $('#toggle-workspaces').click(function() {
+      $('.workspace-container').toggle();
+    });
+  });
+</script>
+
