@@ -7,6 +7,13 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
+    if @user.update(user_params)
+      redirect_to profile_path, success: t('defaults.message.updated', item: User.model_name.human)
+    else
+      flash.now['danger'] = t('defaults.message.not_updated', item: User.model_name.human)
+      render :edit
+    end
+    
   end
 
   private
@@ -16,6 +23,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :avatar)
   end
 end
