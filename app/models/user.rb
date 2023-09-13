@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id               :bigint           not null, primary key
+#  avatar           :string
 #  crypted_password :string
 #  email            :string           not null
 #  name             :string
@@ -16,6 +17,9 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+
+  mount_uploader :avatar, AvatarUploader
+
   has_many :authentications, dependent: :destroy
   has_many :workspaces
   accepts_nested_attributes_for :authentications
