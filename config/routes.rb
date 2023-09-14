@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :workspaces do
-    get 'list', on: :collection
+    collection do
+      get 'list'
+    end
+
+    resources :reviews, only: [:new, :create]
   end
+
   # Defines the root path route ("/")
   root 'pages#lp'
   resource :profile, only: %i[show edit update]
