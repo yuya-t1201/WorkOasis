@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def new
+    @workspace = Workspace.find(params[:workspace_id])
     @review = Review.new
   end
 
