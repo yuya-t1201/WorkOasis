@@ -1,0 +1,56 @@
+<%= form_with(model: [@workspace, @review], url: workspace_reviews_path(@workspace)) do |form| %>
+  <div class="mb-4 text-center">
+    <div class="border-l-4 border-indigo-500 pl-4 mx-auto w-max">
+      <h2 class="text-3xl font-main mt-32 mb-20"><%= @workspace.title %></h2>
+    </div>
+    <!-- 星のアイコンを追加 -->
+    <div class="flex items-center justify-center space-x-2 mb-10">
+      <i class="star fa-solid fa-star "style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
+    </div>
+  </div>
+
+  <div class="mb-4 text-center">
+  <!-- コメント欄を追加 -->
+    <div class="text-center mb-2"> <!-- コメントラベルを中央に配置 -->
+      <%= form.label :comment, 'コメント' %>
+    </div>
+    <%= form.text_area :comment, class: 'block w-64 p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mx-auto' %>
+  </div>
+
+
+  <div class="text-center">
+    <%= form.submit '投稿', class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+  </div>
+<% end %>
+
+
+<script>
+  <!-- 以下は追加したjQueryコードです -->
+  $(document).ready(function() {
+  // 各星に対してクリックイベントを設定
+  $('.star').click(function() {
+    // クリックされた星のインデックスを取得
+    var clickedIndex = $(this).index();
+
+    // クリックされた星とそれより前の星を黄色に変更
+    $('.star').each(function(index) {
+      if (index <= clickedIndex) {
+        $(this).css('color', '#fbe704');
+      } else {
+        // クリックされた星より後の星はデフォルトの色（灰色）に戻す
+        $(this).css('color', '#ccc');
+      }
+    });
+
+    // 隠しフィールドにクリックされた星の数を設定（例：0から4の範囲）
+    $('#review_all_rating').val(clickedIndex + 1);
+  });
+});
+
+
+  </script>
+  <!-- ここまでjQueryコード -->
