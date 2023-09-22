@@ -5,22 +5,24 @@
     </div>
     <!-- 星のアイコンを追加 -->
     <div class="flex items-center justify-center space-x-2 mb-10">
-      <i class="star fa-solid fa-star "style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" style="color: #ccc; font-size: 5rem;"></i>
+      <!-- ここに星のアイコンを表示 -->
+      <i class="star fa-solid fa-star" data-rating="1" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" data-rating="2" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" data-rating="3" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" data-rating="4" style="color: #ccc; font-size: 5rem;"></i>
+      <i class="star fa-solid fa-star" data-rating="5" style="color: #ccc; font-size: 5rem;"></i>
     </div>
+    <!-- hidden inputに評価値を格納 -->
+    <%= form.hidden_field :all_rating, id: 'review_all_rating' %>
   </div>
 
   <div class="mb-4 text-center">
-  <!-- コメント欄を追加 -->
-    <div class="text-center mb-2"> <!-- コメントラベルを中央に配置 -->
+    <!-- コメント欄を追加 -->
+    <div class="text-center mb-2">
       <%= form.label :comment, 'コメント' %>
     </div>
     <%= form.text_area :comment, class: 'block w-64 p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mx-auto' %>
   </div>
-
 
   <div class="text-center">
     <%= form.submit '投稿', class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
@@ -28,29 +30,30 @@
 <% end %>
 
 
-<script>
-  <!-- 以下は追加したjQueryコードです -->
-  $(document).ready(function() {
-  // 各星に対してクリックイベントを設定
-  $('.star').click(function() {
-    // クリックされた星のインデックスを取得
-    var clickedIndex = $(this).index();
 
-    // クリックされた星とそれより前の星を黄色に変更
-    $('.star').each(function(index) {
-      if (index <= clickedIndex) {
-        $(this).css('color', '#fbe704');
-      } else {
-        // クリックされた星より後の星はデフォルトの色（灰色）に戻す
-        $(this).css('color', '#ccc');
-      }
+<script>
+  $(document).ready(function() {
+    // 各星に対してクリックイベントを設定
+    $('.star').click(function() {
+      // クリックされた星のインデックスを取得
+      var clickedIndex = $(this).index();
+
+      // クリックされた星とそれ以降の星を黄色に変更
+      $('.star').each(function(index) {
+        if (index <= clickedIndex) {
+          $(this).css('color', '#fbe704'); // 選択した星とそれ以降の星を黄色に
+        } else {
+          $(this).css('color', '#ccc'); // クリックされなかった星は灰色に
+        }
+      });
+
+      // 隠しフィールドにクリックされた星の数を設定（評価は0から4の範囲）
+      $('#review_all_rating').val(clickedIndex + 1);
     });
 
-    // 隠しフィールドにクリックされた星の数を設定（例：0から4の範囲）
-    $('#review_all_rating').val(clickedIndex + 1);
+    // ページ読み込み時に初期評価を設定（デフォルトは0）
+    $('#review_all_rating').val(0);
   });
-});
+</script>
 
-
-  </script>
   <!-- ここまでjQueryコード -->
