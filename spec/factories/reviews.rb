@@ -5,10 +5,7 @@
 #  id           :bigint           not null, primary key
 #  all_rating   :float
 #  comment      :text
-#  rating1      :float
-#  rating2      :float
-#  rating3      :float
-#  rating4      :float
+#  rating       :integer          default(0), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null
