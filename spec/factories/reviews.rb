@@ -3,7 +3,6 @@
 # Table name: reviews
 #
 #  id           :bigint           not null, primary key
-#  all_rating   :float
 #  comment      :text
 #  rating       :integer          default(0), not null
 #  created_at   :datetime         not null

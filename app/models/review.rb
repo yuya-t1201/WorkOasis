@@ -3,7 +3,6 @@
 # Table name: reviews
 #
 #  id           :bigint           not null, primary key
-#  all_rating   :float
 #  comment      :text
 #  rating       :integer          default(0), not null
 #  created_at   :datetime         not null
@@ -25,7 +24,6 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :workspace
 
-  validates :all_rating, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 1}, presence: true
+  
+   
 end

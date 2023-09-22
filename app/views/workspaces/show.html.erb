@@ -1,9 +1,14 @@
 <div class="container mx-auto px-4 h-full">
   <!-- タイトル -->
-  <div class="flex items-center justify-center m-16">
+  <div class="flex items-center justify-center mx-16 mt-16 mb-8">
     <div class="border-l-4 border-indigo-500 pl-4">
       <h2 class="font-main text-2xl mb-2"><%= @workspace.title %></h2>
     </div>
+    <!-- ハートマークのアイコン -->
+    <i class="fas fa-heart text-red-500 ml-2"></i>
+
+    <!-- 評価値の合計を表示 -->
+    <p class="ml-1"><%= @workspace.reviews.any? ? @workspace.calculate_average_rating : 0 %></p>
   </div>
 
   <div class="flex flex-col md:flex-row md:gap-4">
@@ -48,9 +53,11 @@
   </div>
 
   <% if current_user.present? %>
-    <div class="text-center my-4">
-      <%= link_to "評価する", new_workspace_review_path(@workspace), class: "btn btn-base m-1 bg-neutral" %>
-    </div>
+    <% unless current_user.has_reviewed?(@workspace) %>
+      <div class="text-center my-4">
+        <%= link_to "評価する", new_workspace_review_path(@workspace), class: "btn btn-base m-1 bg-neutral" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
