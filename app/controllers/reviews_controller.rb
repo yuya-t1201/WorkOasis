@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.rating = params[:review][:rating].to_i
     if @review.save
       redirect_to workspace_path(@review.workspace), notice: 'レビューが作成されました'
     else
@@ -36,7 +37,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment, :all_rating, :rating1, :rating2, :rating3, :rating4).merge(
+    params.require(:review).permit(:comment, :rating).merge(
       user_id: current_user.id, workspace_id: params[:workspace_id]
     )
   end

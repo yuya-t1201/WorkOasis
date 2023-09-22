@@ -13,7 +13,7 @@
       <i class="star fa-solid fa-star" data-rating="5" style="color: #ccc; font-size: 5rem;"></i>
     </div>
     <!-- hidden inputに評価値を格納 -->
-    <%= form.hidden_field :all_rating, id: 'review_all_rating' %>
+    <%= form.hidden_field :rating, id: 'review_rating' %>
   </div>
 
   <div class="mb-4 text-center">
@@ -48,11 +48,11 @@
       });
 
       // 隠しフィールドにクリックされた星の数を設定（評価は0から4の範囲）
-      $('#review_all_rating').val(clickedIndex + 1);
+      $('#review_rating').val(clickedIndex + 1);
     });
 
     // ページ読み込み時に初期評価を設定（デフォルトは0）
-    $('#review_all_rating').val(0);
+    $('#review_rating').val(0);
   });
 </script>
 
