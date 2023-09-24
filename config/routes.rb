@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   resources :users, only: %i[new create]
 
   get    '/login',   to: 'sessions#new'
@@ -10,8 +12,18 @@ Rails.application.routes.draw do
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :workspaces do
-    get 'list', on: :collection
+    collection do
+      get 'list'
+    end
+    
+    member do
+      post 'create_favorite'
+      delete 'destroy_favorite'
+    end
+
+    resources :reviews, only: [:new, :create]
   end
+
   # Defines the root path route ("/")
   root 'pages#lp'
   resource :profile, only: %i[show edit update]
