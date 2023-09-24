@@ -23,7 +23,9 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :workspaces
   accepts_nested_attributes_for :authentications
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :likes_workspaces, through: :likes, source: :workspace
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] } 
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -34,5 +36,17 @@ class User < ApplicationRecord
 
   def has_reviewed?(workspace)
     self.reviews.exists?(workspace_id: workspace.id)
+  end
+
+  def like(workspace)
+    likes_workspaces << workspace
+  end
+
+  def unlike(workspace)
+    likes_workspaces.destroy(workspace)
+  end
+
+  def likes?(workspace)
+    likes.exists?(workspace: workspace)
   end
 end

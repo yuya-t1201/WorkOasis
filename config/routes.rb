@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   resources :users, only: %i[new create]
 
   get    '/login',   to: 'sessions#new'
@@ -12,6 +14,11 @@ Rails.application.routes.draw do
   resources :workspaces do
     collection do
       get 'list'
+    end
+    
+    member do
+      post 'create_favorite'
+      delete 'destroy_favorite'
     end
 
     resources :reviews, only: [:new, :create]
