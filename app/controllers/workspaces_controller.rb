@@ -33,6 +33,18 @@ class WorkspacesController < ApplicationController
     end
   end
 
+  def create_favorite
+    @workspace = Workspace.find(params[:id])
+    current_user.likes.create(workspace: @workspace)
+    redirect_to @workspace, notice: 'ワークスペースをお気に入りに追加しました'
+  end
+
+  def destroy_favorite
+    @workspace = Workspace.find(params[:id])
+    current_user.likes.find_by(workspace: @workspace).destroy
+    redirect_to @workspace, notice: 'ワークスペースのお気に入りを解除しました'
+  end
+
   private
 
   def workspace_params
