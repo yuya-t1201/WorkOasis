@@ -2,7 +2,10 @@ class ProfilesController < ApplicationController
   before_action :require_login
   before_action :set_user, only: %i[edit update]
 
-  def show; end
+  def show
+    @likes_workspaces = current_user.likes.map(&:workspace)
+    @reviewed_workspaces = current_user.reviews.map(&:workspace)
+  end
 
   def edit; end
 

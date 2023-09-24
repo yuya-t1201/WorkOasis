@@ -12,24 +12,65 @@
   </div>
 
   <div class="text-center">
-    <button id="toggle-workspaces" class="btn btn-sm m-1 bg-neutral">投稿したワークスペースを表示</button>
-  </div>
-  <% current_user.workspaces.each do |workspace| %>
-    <%= link_to workspace_path(workspace), class: "max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-3 text-center workspace-container flex flex-col items-center justify-center", style: "display: none;" do %>
-      <!-- Workspaceの情報を表示 -->
-      <h2 class="text-xl font-semibold mt-2"><%= workspace.title %></h2>
-      <!-- 他のWorkspace情報もここで表示できます -->
-    <% end %>
-  <% end %>
+  <button id="toggle-posted-workspaces" class="btn btn-sm m-1 bg-neutral">投稿したワークスペースを表示</button>
+  <button id="toggle-liked-workspaces" class="btn btn-sm m-1 bg-neutral">お気に入りしたワークスペースを表示</button>
+  <button id="toggle-reviewed-workspaces" class="btn btn-sm m-1 bg-neutral">評価したワークスペースを表示</button>
+</div>
 
+<% current_user.workspaces.each do |workspace| %>
+  <%= link_to workspace_path(workspace) do %>
+  <div class="max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-3 text-center workspace-container flex flex-col items-center justify-center posted" style="display: none;">
+    <!-- Workspaceの情報を表示 -->
+    <h2 class="text-xl font-semibold mt-2"><%= workspace.title %></h2>
+    <!-- 他のWorkspace情報もここで表示できます -->
+  </div>
+  <% end %>
+<% end %>
+
+<% @likes_workspaces.each do |workspace| %>
+  <%= link_to workspace_path(workspace) do %>
+  <div class="max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-3 text-center workspace-container flex flex-col items-center justify-center liked" style="display: none;">
+    <!-- Workspaceの情報を表示 -->
+    <h2 class="text-xl font-semibold mt-2"><%= workspace.title %></h2>
+    <!-- 他のWorkspace情報もここで表示できます -->
+  </div>
+  <% end %>
+<% end %>
+
+<% @reviewed_workspaces.each do |workspace| %>
+  <%= link_to workspace_path(workspace) do %>
+  <div class="max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-3 text-center workspace-container flex flex-col items-center justify-center reviewed" style="display: none;">
+    <!-- Workspaceの情報を表示 -->
+    <h2 class="text-xl font-semibold mt-2"><%= workspace.title %></h2>
+    <!-- 他のWorkspace情報もここで表示できます -->
+  </div>
+  <% end %>
+<% end %>
 
   
 </body>
 
 <script>
-  $(document).ready(function() {
-    $('#toggle-workspaces').click(function() {
-      $('.workspace-container').toggle();
+    $(document).ready(function() {
+    $('#toggle-posted-workspaces').click(function() {
+      // 他のワークスペースコンテナを非表示にする
+      $('.workspace-container').not('.posted').hide();
+      // 投稿したワークスペースを表示する
+      $('.workspace-container.posted').toggle();
+    });
+
+    $('#toggle-liked-workspaces').click(function() {
+      // 他のワークスペースコンテナを非表示にする
+      $('.workspace-container').not('.liked').hide();
+      // お気に入りしたワークスペースを表示する
+      $('.workspace-container.liked').toggle();
+    });
+
+    $('#toggle-reviewed-workspaces').click(function() {
+      // 他のワークスペースコンテナを非表示にする
+      $('.workspace-container').not('.reviewed').hide();
+      // 評価したワークスペースを表示する
+      $('.workspace-container.reviewed').toggle();
     });
   });
 </script>
