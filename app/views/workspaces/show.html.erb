@@ -11,90 +11,29 @@
     <p class="ml-1"><%= @workspace.reviews.any? ? @workspace.calculate_average_rating : 0 %></p>
   </div>
 
+  <!-- お気に入りボタンと評価ボタン -->
   <div class="flex items-center justify-center mx-16 -mt-6">
-    <% if current_user && current_user.likes?(@workspace) %>
-      <%= button_to "お気に入り済み", destroy_favorite_workspace_path(@workspace), method: :delete, remote: true, data: { confirm: "本当にお気に入りを解除しますか?" }, class: "btn btn-sm btn-warning"  %>
-    <% else %>
-      <%= button_to "お気に入りに追加", create_favorite_workspace_path(@workspace), method: :post, remote: true, class: "btn bg-natural btn-sm "  %>
-    <% end %>
-
-
-    <% if current_user.present? %>
-      <% unless current_user.has_reviewed?(@workspace) %>
-        <%= link_to "評価する", new_workspace_review_path(@workspace), class: "btn btn-sm" %>
-      <% end %>
-    <% end %>
+    <%= render 'likes_button', workspace: @workspace %>
+     <div class="mx-2"></div>
+    <%= render 'review_button', workspace: @workspace %>
   </div>
 
   <div class="flex flex-col md:flex-row md:gap-4">
     <!-- 左側の詳細情報 -->
-    <div class="md:w-1/2 md:pr-4">
-      <div class="my-8">
-      <!-- 店舗情報 -->
-        <div class="font-semibold text-lg flex items-center justify-center">店舗情報</div>
-       </div>
-
-      <!-- 住所 -->
-      <div class="my-8 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">住所: <%= @workspace.address %></p>
-      </div>
-
-      <!-- 金額帯 -->
-      <div class="my-8 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">金額帯: <%= @workspace.price %>円</p>
-      </div>
-
-      <!-- おすすめポイント -->
-      <div class="my-4 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">おすすめポイント</p>
-        <p><%= @workspace.recommendation %></p>
-      </div>
-
-      <!-- 画像 -->
-      <div class="my-4 flex items-center justify-center">
-        <% if @workspace.workspace_image.present? %>
-          <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
-        <% else %>
-          <%= image_tag "workspace_default.png", class: "max-w-xs max-h-48" %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'workspace_details', workspace: @workspace %>
 
     <!-- 右側の地図表示 -->
-    <div class="my-4 text-center md:w-1/2">
-      <p class="font-semibold text-lg my-4">所在地</p>
-      <div id="map" class="w-full h-96"></div>
-    </div>
+    <%= render 'workspace_map', workspace: @workspace %>
   </div>
 
   <!-- ユーザーの評価を見るボタン -->
   <div class="flex items-center justify-center mx-16 mt-4 mb-8">
     <button id="toggle-reviews" class="btn btn-sm">ユーザーの評価を見る</button>
   </div>
- <!-- 評価情報を表示するコンテナ -->
+
+  <!-- 評価情報を表示するコンテナ -->
   <div id="reviews-container" class="hidden">
-  <% if @workspace.reviews.present? %>
-    <!-- ワークスペース評価の表示 -->
-    <div class="workspace-rating mx-auto mt-4 ">
-      <% @workspace.reviews.each do |review| %>
-        <div class="chat chat-start flex item-center justify-center">
-          <div class="chat-image avatar">
-            <div class="w-10 rounded-full">
-              <%= image_tag review.user.avatar_url %> <!-- ユーザーアイコンの表示 -->
-            </div>
-          </div>
-          <div class="chat-bubble">
-            <%= review.comment %> <!-- 評価コメントの表示 -->
-            <div class="rating-stars">
-              <% review.rating.times do %>
-                <i class="star fa-solid fa-star" style="color: #fbe704; font-size: 1rem;"></i> <!-- 評価スターの表示 -->
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+    <%= render 'reviews_by_others', workspace: @workspace %>
   </div>
 
 </div>
@@ -117,6 +56,11 @@
       title: '<%= @workspace.title %>'
     });
   }
+   $(document).ready(function() {
+    $('#toggle-reviews').click(function() {
+      $('#reviews-container').toggle(); // 評価を表示/非表示を切り替える
+    });
+  });
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALLnOvcLorPuwL8pjRiw6Hy5-Nnj5PFQI&callback=initMap" async defer></script>
