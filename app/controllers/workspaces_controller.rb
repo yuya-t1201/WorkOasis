@@ -28,8 +28,10 @@ class WorkspacesController < ApplicationController
       @workspaces = Workspace.latest
     elsif params[:old]
       @workspaces = Workspace.old
+    elsif params[:highest_rated]
+      @workspaces = Workspace.highest_rated
     else
-    @workspaces = Workspace.all
+    @workspaces = Workspace.latest
     end
   end
 
