@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_073343) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_26_152308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,12 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_073343) do
     t.index ["workspace_id"], name: "index_reviews_on_workspace_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -59,16 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_073343) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
-  end
-
-  create_table "workspace_tags", force: :cascade do |t|
-    t.bigint "workspace_id", null: false
-    t.bigint "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["tag_id"], name: "index_workspace_tags_on_tag_id"
-    t.index ["workspace_id", "tag_id"], name: "index_workspace_tags_on_workspace_id_and_tag_id", unique: true
-    t.index ["workspace_id"], name: "index_workspace_tags_on_workspace_id"
   end
 
   create_table "workspaces", force: :cascade do |t|
@@ -90,6 +74,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_073343) do
   add_foreign_key "likes", "workspaces"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "workspaces"
-  add_foreign_key "workspace_tags", "tags"
-  add_foreign_key "workspace_tags", "workspaces"
 end
