@@ -5,11 +5,7 @@
     <div class="border-l-4 border-indigo-500 pl-4">
       <h2 class="font-main text-2xl mb-2"><%= @workspace.title %></h2>
     </div>
-    <!-- ハートマークのアイコン -->
-    <i class="fas fa-heart text-red-500 ml-2"></i>
-
-    <!-- 評価値の合計を表示 -->
-    <p class="ml-1"><%= @workspace.reviews.any? ? @workspace.calculate_average_rating : 0 %></p>
+    <%= render 'likes_count', workspace: @workspace %>
   </div>
 
   <!-- お気に入りボタンと評価ボタン -->
