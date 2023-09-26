@@ -22,8 +22,6 @@
 class Workspace < ApplicationRecord
   belongs_to :user
 
-  has_many :workspace_tags, dependent: :destroy
-  has_many :tags, through: :workspace_tags
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
