@@ -1,0 +1,5 @@
+<% if current_user.present? %>
+      <% unless current_user.has_reviewed?(workspace) %>
+        <%= link_to "評価する", new_workspace_review_path(workspace), class: "btn btn-sm" %>
+      <% end %>
+    <% end %>

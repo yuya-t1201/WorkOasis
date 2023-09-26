@@ -1,37 +1,6 @@
-<div class="bg-primary min-h-screen flex items-center justify-center">
-  <div class="max-w-md w-full p-6 bg-secondary rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-4">ユーザー登録</h2>
-    <%= form_with(model: @user, url: users_path, class: "mt-8 space-y-6") do |form| %>
-      <% if @user.errors.any? %>
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded">
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="mt-4">
-        <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.text_field :name, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.email_field :email, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.password_field :password, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.password_field :password_confirmation, class: "mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-      </div>
-      <div class="mt-6">
-        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-          登録する
-        </button>
-      </div>
-    <% end %>
+<div class="flex items-center justify-center mt-20">
+  <div class="max-w-md w-full p-6 bg-neutral rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold  text-center mb-4">ユーザー登録</h2>
+    <%= render 'sign_up_form', user: @user %>
   </div>
 </div>
