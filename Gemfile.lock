@@ -187,8 +187,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.1.1)
-      railties (>= 6.0.0)
     json (2.6.3)
     jwt (2.7.1)
     kramdown (2.4.0)
@@ -431,7 +429,6 @@ DEPENDENCIES
   gmaps4rails
   importmap-rails
   jbuilder
-  jsbundling-rails
   mini_magick
   omniauth-google-oauth2
   pg (~> 1.1)
