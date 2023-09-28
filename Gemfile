@@ -68,7 +68,6 @@ group :development do
   gem "annotate"
   gem "sassc"
   gem 'cssbundling-rails'
-  gem 'jsbundling-rails'
   gem 'sorcery'
   gem 'omniauth-google-oauth2'
   gem 'config'
