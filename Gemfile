@@ -69,8 +69,6 @@ group :development do
   gem "sassc"
   gem 'cssbundling-rails'
   gem 'sorcery'
-  gem 'omniauth-google-oauth2'
-  gem 'config'
   gem 'gmaps4rails'
   gem 'geocoder'
   gem 'dotenv-rails'
