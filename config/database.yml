@@ -81,6 +81,10 @@ test:
 #
 production:
   <<: *default
-  database: WorkOasis_production
-  username: WorkOasis
+  adapter: postgresql
+  encoding: unicode
+  host: ec2-54-234-13-16.compute-1.amazonaws.com
+  database: db91oku84gkmql
+  username: bxptmjbxyjiixb
   password: <%= ENV["WORKOASIS_DATABASE_PASSWORD"] %>
+  port: 5432
