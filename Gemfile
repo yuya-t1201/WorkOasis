@@ -48,18 +48,10 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem "web-console"
-gem "rubocop", require: false
-gem "rubocop-rails", require: false
 gem "bullet"
-gem "better_errors"
-gem "binding_of_caller"
-gem "solargraph"
-gem "annotate"
 gem "sassc"
 gem 'cssbundling-rails'
 gem 'sorcery'
-gem 'omniauth-google-oauth2'
 gem 'config'
 gem 'gmaps4rails'
 gem 'geocoder'
@@ -67,12 +59,23 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+group :development do
+  gem "web-console"
+  gem "binding_of_caller"
+  gem "better_errors"
+  gem "solargraph"
+  gem "annotate"
+end
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "shoulda-matchers"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
 end
 
 
