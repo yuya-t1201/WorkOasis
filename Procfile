@@ -1,1 +1,3 @@
-web: bundle exec puma -C config/puma.rb
+web: unset PORT && bin/rails server
+css: yarn build:css --watch
+js: yarn build --watch
