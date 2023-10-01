@@ -53,11 +53,11 @@
       title: '<%= @workspace.title %>'
     });
   }
-   $(document).ready(function() {
+
+  $(document).ready(function() {
     $('#toggle-reviews').click(function() {
       $('#reviews-container').toggle(); // 評価を表示/非表示を切り替える
     });
   });
-
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALLnOvcLorPuwL8pjRiw6Hy5-Nnj5PFQI&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
