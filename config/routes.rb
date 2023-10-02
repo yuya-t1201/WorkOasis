@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       delete 'destroy_favorite'
     end
 
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
 
   # Defines the root path route ("/")
