@@ -1,4 +1,4 @@
-<%= form_with(model: [@workspace, @review], url: workspace_reviews_path(@workspace)) do |form| %>
+<%= form_with(model: [@workspace, @review], url: workspace_review_path(@workspace, @review), method: :patch) do |form| %>
   <div class="mb-4 text-center">
     <div class="border-l-4 border-indigo-500 pl-4 mx-auto w-max">
       <h2 class="text-3xl font-main mt-32 mb-20"><%= @workspace.title %></h2>
@@ -6,11 +6,9 @@
     <!-- 星のアイコンを追加 -->
     <div class="flex items-center justify-center space-x-2 mb-10">
       <!-- ここに星のアイコンを表示 -->
-      <i class="star fa-solid fa-star" data-rating="1" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" data-rating="2" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" data-rating="3" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" data-rating="4" style="color: #ccc; font-size: 5rem;"></i>
-      <i class="star fa-solid fa-star" data-rating="5" style="color: #ccc; font-size: 5rem;"></i>
+      <% (1..5).each do |rating| %>
+        <i class="star fa-solid fa-star" data-rating="<%= rating %>" style="color: <%= @review.rating >= rating ? '#fbe704' : '#ccc' %>; font-size: 5rem;"></i>
+      <% end %>
     </div>
     <!-- hidden inputに評価値を格納 -->
     <%= form.hidden_field :rating, id: 'review_rating' %>
@@ -25,7 +23,7 @@
   </div>
 
   <div class="text-center">
-    <%= form.submit '投稿', class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    <%= form.submit '更新', class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
   </div>
 <% end %>
 

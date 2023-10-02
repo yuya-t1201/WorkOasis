@@ -1,22 +1,35 @@
 <% if workspace.reviews.present? %>
-    <!-- ワークスペース評価の表示 -->
-    <div class="workspace-rating mx-auto mt-4 ">
-      <% workspace.reviews.each do |review| %>
-        <div class="chat chat-start flex item-center justify-center">
-          <div class="chat-image avatar">
-            <div class="w-10 rounded-full">
-              <%= image_tag review.user.avatar_url %> <!-- ユーザーアイコンの表示 -->
-            </div>
+  <!-- ワークスペース評価の表示 -->
+  <div class="workspace-rating mx-auto mt-4">
+    <% workspace.reviews.each do |review| %>
+      <div class="chat chat-start flex item-center justify-center">
+        <div class="chat-image avatar">
+          <div class="w-10 rounded-full">
+            <%= image_tag review.user.avatar_url %> <!-- ユーザーアイコンの表示 -->
           </div>
-          <div class="chat-bubble">
-            <%= review.comment %> <!-- 評価コメントの表示 -->
+        </div>
+        <div class="chat-bubble">
+          <div class="rating-header">
+            <span class="user-name"><%= review.user.name %></span> <!-- ユーザー名の表示 -->
             <div class="rating-stars">
               <% review.rating.times do %>
                 <i class="star fa-solid fa-star" style="color: #fbe704; font-size: 1rem;"></i> <!-- 評価スターの表示 -->
               <% end %>
             </div>
           </div>
+          <div class="comment">
+            <%= review.comment %> <!-- 評価コメントの表示 -->
+          </div>
         </div>
-      <% end %>
-    </div>
+        <div class="ml-4 mt-4"> <!-- 編集リンクを右に配置するためのマージンを追加 -->
+          <% if current_user == review.user %> <!-- 現在のユーザーがレビューの投稿者である場合に編集ボタンを表示 -->
+            <%= link_to "編集", edit_workspace_review_path(@workspace, review), class: "btn btn-outline " %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+
+
+
