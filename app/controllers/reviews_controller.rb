@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @workspace = @review.workspace
   end
 
   def update
