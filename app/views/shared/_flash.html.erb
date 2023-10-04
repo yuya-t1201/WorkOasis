@@ -1,0 +1,22 @@
+<div class="flash-message">
+    <% if flash[:notice] %>
+  <div class="fixed top-0 right-0 left-0 z-50 text-blue-700  p-4 text-xl text-center" role="alert">
+    <%= flash[:notice] %>
+    <button class="close-button w-5" onclick="closeFlashMessage(this)">X</button>
+  </div>
+  <% end %>
+
+    <% if flash[:alert] %>
+      <div class="fixed top-0 right-0 left-0 z-50 bg-red-100 text-red-700 dark:text-red-800 p-4 text-xl text-center">
+        <%= flash[:alert] %>
+        <button class="close-button w-5" onclick="closeFlashMessage(this)">X</button>
+      </div>
+    <% end %>
+</div>
+<script>
+        function closeFlashMessage(button) {
+            // 親要素を取得し、それを削除
+            var messageContainer = button.parentNode;
+            messageContainer.parentNode.removeChild(messageContainer);
+        }
+    </script>
