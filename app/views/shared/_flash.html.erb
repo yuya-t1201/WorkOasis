@@ -1,6 +1,6 @@
 <div class="flash-message">
     <% if flash[:notice] %>
-  <div class="fixed top-0 right-0 left-0 z-50 text-blue-700  p-4 text-xl text-center" role="alert">
+  <div class="fixed top-0 right-0 bg-primary left-0 z-50 text-blue-700  p-4 text-xl text-center">
     <%= flash[:notice] %>
     <button class="close-button w-5" onclick="closeFlashMessage(this)">X</button>
   </div>
