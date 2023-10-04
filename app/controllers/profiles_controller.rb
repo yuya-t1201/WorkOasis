@@ -11,12 +11,11 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: t('defaults.message.updated', item: User.model_name.human)
+      redirect_to profile_path, notice: 'ユーザー情報が更新されました'
     else
-      flash.now['danger'] = t('defaults.message.not_updated', item: User.model_name.human)
+      flash.now[:danger] = 'ユーザー情報を更新できませんでした'
       render :edit
     end
-    
   end
 
   private
