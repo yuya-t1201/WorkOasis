@@ -25,6 +25,14 @@ module.exports = {
           }
 
         }
+      },
+      colors: {
+        red: {
+          400: '#f87171'
+        },
+        green: {
+          400: '#4ade80'
+        }
       }
       
     }
@@ -37,11 +45,11 @@ module.exports = {
         "secondary": "#607EAA",
         "accent": "#E8DFCA",
         "neutral": "#AEBDCA",
-        "base-100": "#ffffff",
+        "base-100": "##f43f5e",
         "info": "#3abff8",
         "success": "#36d399",
         "warning": "#fbbd23",
-        "error": "#f87272",
+        "red": "#f43f5e",
         },
       },
     ],

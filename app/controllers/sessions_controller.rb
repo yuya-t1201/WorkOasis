@@ -4,15 +4,12 @@ class SessionsController < ApplicationController
     def new; end
   
     def create
-      @user = User.authenticate(params[:email], params[:password])
-  
+      @user = login(params[:email], params[:password])
       if @user
-        if login(params[:email], params[:password])
-          redirect_to workspaces_path, notice: 'ログインしました'
-        else
-          flash.now[:alert] = 'ログインに失敗しました'
-          render :new
-        end
+        redirect_to workspaces_path, notice: 'ログインしました'
+      else
+        flash.now[:alert] = 'ログインできませんでした'
+        render :new
       end
     end
   

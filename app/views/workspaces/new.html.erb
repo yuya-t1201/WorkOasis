@@ -1,18 +1,21 @@
 <div class="flex items-center justify-center min-h-screen">
   <div class="w-full max-w-md mt-16">
     <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">ワークスペース登録</h1>
-    <%= form_with model: @workspace, local: true do |f| %>
+    <%= form_with model: @workspace,  data: { turbo: false } do |f| %>
       
       <% if @workspace.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>
+        <div class="bg-red-400 text-red-800 m-16 pl-6 rounded-lg ">
+          <h4 class="text-lg"><%= pluralize(@workspace.errors.count, "error") %> prohibited this workspace from being saved:</h4>
           <ul>
             <% @workspace.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <li class="text-sm"><%= message %></li>
+
             <% end %>
-          </ul>
+           </ul>
         </div>
       <% end %>
+
+
 
       <div class="my-4">
         <%= f.label :名称, class: "block font-semibold" %>
