@@ -1,15 +1,6 @@
 <%= form_with model: @user, url: profile_path, data: { turbo: false } do |f|  %>
+      <%= render 'shared/error_messages', object: @user %>
       
-       <% if @user.errors.any? %>
-         <div class="bg-red-400 border border-red-800 text-red-700 px-4 py-2 rounded">
-         <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-        </ul>
-        </div>
-        <% end %>
-
       <div class="my-4">
         <%= f.label :name, class: "block font-semibold" %>
         <%= f.text_field :name, class: "input w-full", required: true %>

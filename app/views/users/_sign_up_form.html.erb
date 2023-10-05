@@ -1,13 +1,6 @@
 <%= form_with(model: user, url: users_path, data: { turbo: false }, class: "mt-8 space-y-6") do |form| %>
-  <% if @user.errors.any? %>
-  <div class="bg-red-400 border border-red-800 text-red-700 px-4 py-2 rounded">
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+
+  <%= render 'shared/error_messages', object: @user %>
 
   <div class="mt-4">
     <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
