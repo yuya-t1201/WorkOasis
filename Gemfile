@@ -60,6 +60,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false
+gem 'kaminari'
 
 group :development do
   gem "web-console"
