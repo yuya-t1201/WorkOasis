@@ -4,7 +4,11 @@
       <div class="chat chat-start flex item-center justify-center">
         <div class="chat-image avatar">
           <div class="w-10 rounded-full">
-            <%= image_tag review.user.avatar_url %> 
+            <% if review.user.avatar_url.present? %>
+              <%= image_tag review.user.avatar_url %> 
+            <% else %>
+              <%= image_tag 'user_default.png' %> <!-- デフォルトのアバター画像を指定 -->
+            <% end %>
           </div>
         </div>
         <div class="chat-bubble">
