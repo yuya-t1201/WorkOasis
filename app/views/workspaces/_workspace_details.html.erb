@@ -1,31 +1,26 @@
 <div class="md:w-1/2 md:pr-4">
-      <div class="my-8">
-      <!-- 店舗情報 -->
-        <div class="font-semibold text-lg flex items-center justify-center">店舗情報</div>
-       </div>
+  <div class="my-8">
+    <div class="font-semibold text-lg flex items-center justify-center"><%= t('workspaces.show.store_information') %></div>
+  </div>
 
-      <!-- 住所 -->
-      <div class="my-8 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">住所: <%= workspace.address %></p>
-      </div>
+  <div class="my-8 border-b-2 border-neutral pb-4">
+    <p class="font-semibold text-base"><%= t('workspaces.show.address_label') %>: <%= workspace.address %></p>
+  </div>
 
-      <!-- 金額帯 -->
-      <div class="my-8 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">金額帯: <%= workspace.price %>円</p>
-      </div>
+  <div class="my-8 border-b-2 border-neutral pb-4">
+    <p class="font-semibold text-base"><%= t('workspaces.show.price_label') %>: <%= workspace.price %>円</p>
+  </div>
 
-      <!-- おすすめポイント -->
-      <div class="my-4 border-b-2 border-neutral pb-4">
-        <p class="font-semibold text-base">おすすめポイント</p>
-        <p><%= workspace.recommendation %></p>
-      </div>
+  <div class="my-4 border-b-2 border-neutral pb-4">
+    <p class="font-semibold text-base"><%= t('workspaces.show.recommendation_label') %></p>
+    <p><%= workspace.recommendation %></p>
+  </div>
 
-      <!-- 画像 -->
-      <div class="my-4 flex items-center justify-center">
-        <% if workspace.workspace_image.present? %>
-          <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
-        <% else %>
-          <%= image_tag "workspace_default.png", class: "max-w-xs max-h-48" %>
-        <% end %>
-      </div>
-    </div>
+  <div class="my-4 flex items-center justify-center">
+    <% if workspace.workspace_image.present? %>
+      <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
+    <% else %>
+      <%= image_tag "workspace_default.png", class: "max-w-xs max-h-48" %>
+    <% end %>
+  </div>
+</div>

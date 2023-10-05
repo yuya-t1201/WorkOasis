@@ -1,0 +1,99 @@
+ja:
+  lp:
+    section1:
+      title: "WorkOasis"
+      subtitle: "理想の作業環境を見つけるための究極のマップアプリ"
+    section2:
+      title: "あなたのパーソナルな作業スペースマップ"
+      description: |
+        WorkOasisは、作業環境を探し求める人々のための革新的なマップアプリです。カフェ、コワーキングスペース、図書館など、あなたが集中して作業できる理想的な場所を探しましょう。
+    section3:
+      title: "ユーザーが登録する作業スペース"
+      description: |
+        WorkOasisでは、ユーザー自身がお気に入りの作業スペースを登録することができます。あなたの好みやニーズに合わせた場所をマップ上にピンポイントで表示します。他のユーザーと場所の情報を共有しましょう。
+    section4:
+      title: "レビューと評価で信頼性の高い情報"
+      description: |
+        WorkOasisでは、ユーザーが作業スペースに対して評価とレビューを投稿することができます。他のユーザーの意見や体験を参考にして、最適な作業環境を見つけましょう。
+    section5:
+      call_to_action: "さあ、始めよう！"
+  sessions:
+    new:
+      email_label: "メールアドレス"
+      password_label: "パスワード"
+      submit_button: "ログイン"
+  users:
+    new:
+      title: "ユーザー登録"
+      form_title: "ユーザー情報入力"
+      name_label: "名前"
+      email_label: "メールアドレス"
+      password_label: "パスワード"
+      password_confirmation_label: "パスワード確認"
+      submit_button: "登録する"
+      errors_header: "エラーが発生しました:"
+      email_taken: "このメールアドレスはすでに使用されています。別のメールアドレスを選択してください。"
+      password_confirmation_mismatch: "パスワードとパスワード確認が一致しません。"
+      password_too_short: "パスワードは最低%{count}文字以上である必要があります。"
+      name_blank: "名前を入力してください."
+  workspaces:
+    new:
+      title: "ワークスペース登録"
+      form_title: "ワークスペース情報入力"
+      name_label: "名称"
+      address_label: "住所"
+      price_label: "金額帯"
+      recommendation_label: "おすすめポイント"
+      image_label: "写真"
+      submit_button: "登録する"
+      errors_header: "エラーが発生しました:"
+    show:
+      rate_workspace_button: "評価する"
+      favorite_remove_button: "お気に入り済み"
+      favorite_add_button: "お気に入りに追加"
+      confirm_remove_favorite: "本当にお気に入りを解除しますか?"
+      store_information: "店舗情報"
+      address_label: "住所"
+      price_label: "金額帯"
+      recommendation_label: "おすすめポイント"
+      view_reviews_button: "ユーザーの評価を見る"
+      edit_review_button: "編集"
+      no_reviews: "評価はまだありません"
+    list:
+      title: "ワークスペース一覧"
+      sort_label: "並び替え"
+      latest_option: "新着順"
+      old_option: "古い順"
+      highest_rated_option: "評価順"
+  reviews:
+    new:
+      title: "評価を投稿する"
+      rating_label: "評価"
+      comment_label: "コメント"
+      submit_button: "投稿"
+    edit:
+      title: "評価を編集する"
+      comment_label: "コメント"
+      submit_button: "更新"
+  profiles:
+    show:
+      edit_profile_button: "編集"
+      toggle_posted_workspaces_button: "投稿したワークスペースを表示"
+      toggle_liked_workspaces_button: "お気に入りしたワークスペースを表示"
+      toggle_reviewed_workspaces_button: "評価したワークスペースを表示"
+    edit:
+      error_explanation_title: "%{count}つのエラーがあります："
+      name_label: "名前"
+      email_label: "メールアドレス"
+      avatar_label: "アバター"
+      avatar_preview_label: "アバタープレビュー"
+      submit_button: "変更を保存"
+  header:
+    workoasis: "WorkOasis"
+    post: "投稿"
+    list: "一覧"
+    menu: "メニュー"
+    mypage: "マイページ"
+    logout: "ログアウト"
+    signup: "新規登録"
+    login: "ログイン"

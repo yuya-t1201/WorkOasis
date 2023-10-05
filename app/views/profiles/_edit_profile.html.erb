@@ -1,15 +1,14 @@
-<%= form_with model: @user, url: profile_path, local: true do |f|  %>
+<%= form_with model: @user, url: profile_path, data: { turbo: false } do |f|  %>
       
-      <% if current_user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% current_user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+       <% if @user.errors.any? %>
+         <div class="bg-red-400 border border-red-800 text-red-700 px-4 py-2 rounded">
+         <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
         </div>
-      <% end %>
+        <% end %>
 
       <div class="my-4">
         <%= f.label :name, class: "block font-semibold" %>
