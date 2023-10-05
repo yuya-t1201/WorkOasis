@@ -1,12 +1,12 @@
 <div class="max-w-xl mx-auto my-10 bg-white rounded-lg shadow-md p-5 text-center">
     <%= render 'profile_details' %>
-    <%= link_to '編集', edit_profile_path, class: 'btn btn-sm m-1 bg-neutral' %>
+    <%= link_to t('profiles.show.edit_profile_button'), edit_profile_path, class: 'btn btn-sm m-1 bg-neutral' %>
 </div>
 
 <div class="text-center">
-  <button id="toggle-posted-workspaces" class="btn btn-sm m-1 bg-neutral">投稿したワークスペースを表示</button>
-  <button id="toggle-liked-workspaces" class="btn btn-sm m-1 bg-neutral">お気に入りしたワークスペースを表示</button>
-  <button id="toggle-reviewed-workspaces" class="btn btn-sm m-1 bg-neutral">評価したワークスペースを表示</button>
+  <button id="toggle-posted-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_posted_workspaces_button') %></button>
+  <button id="toggle-liked-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_liked_workspaces_button') %></button>
+  <button id="toggle-reviewed-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_reviewed_workspaces_button') %></button>
 </div>
 
 <%= render 'posted_workspaces' %>

@@ -2,33 +2,33 @@
   <div class="flex-1">
     <% if logged_in? %>
       <%= link_to workspaces_path, class: "btn btn-ghost normal-case text-xl" do %>
-        WorkOasis
+        <%= t('header.workoasis') %>
       <% end %>
     <% else %>
       <%= link_to root_path, class: "btn btn-ghost normal-case text-xl" do %>
-        WorkOasis
+        <%= t('header.workoasis') %>
       <% end %>
     <% end %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <% if logged_in? %>
-        <li><%= link_to '投稿', new_workspace_path %></li>
-        <li><%= link_to '一覧', list_workspaces_path %></li>
+        <li><%= link_to t('header.post'), new_workspace_path %></li>
+        <li><%= link_to t('header.list'), list_workspaces_path %></li>
         <li>
           <details>
             <summary>
-              メニュー
+              <%= t('header.menu') %>
             </summary>
             <ul class="p-2 bg-base-100">
-              <li><%= link_to 'マイページ', profile_path %></li>
-              <li><%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete } %></li>
+              <li><%= link_to t('header.mypage'), profile_path %></li>
+              <li><%= link_to t('header.logout'), logout_path, method: :delete, data: { turbo_method: :delete } %></li>
             </ul>
           </details>
         </li>
       <% else %>
-        <li><%= link_to '新規登録', new_user_path %></li>
-        <li><%= link_to 'ログイン', login_path %></li>
+        <li><%= link_to t('header.signup'), new_user_path %></li>
+        <li><%= link_to t('header.login'), login_path %></li>
       <% end %>
     </ul>
   </div>

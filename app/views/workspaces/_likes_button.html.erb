@@ -1,5 +1,5 @@
 <% if current_user && current_user.likes?(workspace) %>
-      <%= button_to "お気に入り済み", destroy_favorite_workspace_path(workspace), method: :delete, remote: true, data: { confirm: "本当にお気に入りを解除しますか?" }, class: "btn btn-sm btn-warning"  %>
-    <% else %>
-      <%= button_to "お気に入りに追加", create_favorite_workspace_path(workspace), method: :post, remote: true, class: "btn bg-natural btn-sm "  %>
-    <% end %>
+  <%= button_to t('workspaces.show.favorite_remove_button'), destroy_favorite_workspace_path(workspace), method: :delete, remote: true, data: { confirm: t('workspaces.show.confirm_remove_favorite') }, class: "btn btn-sm btn-warning" %>
+<% else %>
+  <%= button_to t('workspaces.show.favorite_add_button'), create_favorite_workspace_path(workspace), method: :post, remote: true, class: "btn bg-natural btn-sm" %>
+<% end %>
