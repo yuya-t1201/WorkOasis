@@ -38,10 +38,9 @@ class Workspace < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
   scope :highest_rated, -> {
-  joins(:reviews)
+  left_joins(:reviews)
     .group('workspaces.id')
-    .having('SUM(reviews.rating) >= 0')
-    .order('SUM(reviews.rating) DESC')
+    .order(Arel.sql('COALESCE(SUM(reviews.rating), 0) DESC'))
   }
 
   enum price: { '1~500': 0, '500~1000': 1, '1000~1500': 3, '1500~2000': 4, '2000~': 5

@@ -25,13 +25,13 @@ class WorkspacesController < ApplicationController
 
   def list
     if params[:latest]
-      @workspaces = Workspace.latest
+      @workspaces = Workspace.latest.page(params[:page]).per(10)
     elsif params[:old]
-      @workspaces = Workspace.old
+      @workspaces = Workspace.old.page(params[:page]).per(10)
     elsif params[:highest_rated]
-      @workspaces = Workspace.highest_rated
+      @workspaces = Workspace.highest_rated.page(params[:page]).per(10)
     else
-    @workspaces = Workspace.latest
+      @workspaces = Workspace.latest.page(params[:page]).per(10)
     end
   end
 
