@@ -31,6 +31,7 @@
   let map;
   let searchInput;
   let searchButton;
+  let infoWindows = [];
 
   function initMap() {
     const tokyoStation = { lat: 35.681240, lng: 139.766115 };
@@ -54,8 +55,24 @@
       });
 
       marker.addListener('click', function () {
-        infowindow.open(map, marker);
+        if (infowindow.getMap()) {
+          infowindow.close();
+          map.setCenter(marker.getPosition());
+          map.setZoom(12);
+        } else {
+          // 選択されたマーカー以外の情報ウィンドウを閉じる
+          infoWindows.forEach(window => window.close());
+
+          // 詳細ページへのリンクを作成
+          const workspaceLink = `<a href="/workspaces/${workspace.id}">${workspace.title}</a>`;
+          infowindow.setContent(workspaceLink);
+          infowindow.open(map, marker);
+          map.setCenter(marker.getPosition());
+          map.setZoom(15); // 詳細ページへのリンクを表示するためにズームイン
+        }
       });
+
+      infoWindows.push(infowindow);
     });
 
     searchInput = document.getElementById('search-input');
@@ -103,8 +120,24 @@
     });
 
     marker.addListener('click', function () {
-      infowindow.open(map, marker);
+      if (infowindow.getMap()) {
+        infowindow.close();
+        map.setCenter(marker.getPosition());
+        map.setZoom(12);
+      } else {
+        // 選択されたマーカー以外の情報ウィンドウを閉じる
+        infoWindows.forEach(window => window.close());
+
+        // 詳細ページへのリンクを作成
+        const workspaceLink = `<a href="/workspaces/${place.id}">${place.name}</a>`;
+        infowindow.setContent(workspaceLink);
+        infowindow.open(map, marker);
+        map.setCenter(marker.getPosition());
+        map.setZoom(15); // 詳細ページへのリンクを表示するためにズームイン
+      }
     });
+
+    infoWindows.push(infowindow);
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
