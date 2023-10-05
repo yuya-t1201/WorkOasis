@@ -61,8 +61,14 @@
 
 <div class="flex items-center justify-center min-h-screen bg-white">
   <div class="max-w-3xl">
-    <%= link_to login_path, class: "inline-block bg-white text-black text-xl font-bold py-6 px-10 rounded-lg border border-black hover:bg-gray-200" do %>
-      <%= t('lp.section5.call_to_action') %>
+    <% if logged_in? %> 
+      <%= link_to workspaces_path, class: "inline-block bg-white text-black text-xl font-bold py-6 px-10 rounded-lg border border-black hover:bg-gray-200" do %>
+        <%= t('lp.section5.call_to_action') %>
+      <% end %>
+    <% else %>
+      <%= link_to login_path, class: "inline-block bg-white text-black text-xl font-bold py-6 px-10 rounded-lg border border-black hover:bg-gray-200" do %>
+        <%= t('lp.section5.call_to_action') %>
+      <% end %>
     <% end %>
   </div>
 </div>
