@@ -97,3 +97,6 @@ ja:
     logout: "ログアウト"
     signup: "新規登録"
     login: "ログイン"
+  placeholders:
+    workspace:
+      address: "例: 東京都千代田区丸の内2-4-1"
