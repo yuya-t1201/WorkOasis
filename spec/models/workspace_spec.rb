@@ -13,11 +13,11 @@
 #  workspace_image :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  user_id         :integer
 #
 # Indexes
 #
-#  index_workspaces_on_user_id  (user_id)
+#  index_workspaces_on_address  (address) UNIQUE
+#  index_workspaces_on_title    (title) UNIQUE
 #
 require 'rails_helper'
 
