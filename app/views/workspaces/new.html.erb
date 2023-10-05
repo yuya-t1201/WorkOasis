@@ -1,16 +1,9 @@
-<div class="flex items-center justify-center min-h-screen">
+<div class="flex items-center justify-center ">
   <div class="w-full max-w-md mt-16">
     <h1 class="text-3xl font-bold text-center mb-4 text-gray-800"><%= t('workspaces.new.title') %></h1>
     <%= form_with model: @workspace,  data: { turbo: false } do |f| %>
       
-      <% if @workspace.errors.any? %>
-  <div class="bg-red-400 text-red-800 m-16 pl-6 rounded-lg ">
-      <% @workspace.errors.full_messages.each do |message| %>
-        <li class="text-sm"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+    <%= render 'shared/error_messages', object: @workspace %>
 
       <div class="my-4">
         <%= f.label t('workspaces.new.name_label'), class: "block font-semibold" %>
@@ -19,7 +12,7 @@
 
       <div class="my-4">
         <%= f.label t('workspaces.new.address_label'), class: "block font-semibold" %>
-        <%= f.text_field :address, class: "input w-full" %>
+        <%= f.text_field :address, class: "input w-full", placeholder: t('placeholders.workspace.address') %>
       </div>
 
       <div class="my-4">
