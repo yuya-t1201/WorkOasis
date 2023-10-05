@@ -1,6 +1,5 @@
 <div class="container mx-auto px-4 h-full mb-0">
 
-  <!-- タイトル -->
   <div class="flex items-center justify-center mr-16 ml-12 mt-16 mb-8">
     <div class="border-l-4 border-indigo-500 pl-4">
       <h2 class="font-main text-2xl mb-2"><%= @workspace.title %></h2>
@@ -8,7 +7,6 @@
     <%= render 'likes_count', workspace: @workspace %>
   </div>
 
-  <!-- お気に入りボタンと評価ボタン -->
   <div class="flex items-center justify-center mx-16 -mt-6">
     <%= render 'likes_button', workspace: @workspace %>
      <div class="mx-2"></div>
@@ -16,19 +14,16 @@
   </div>
 
   <div class="flex flex-col md:flex-row md:gap-4">
-    <!-- 左側の詳細情報 -->
     <%= render 'workspace_details', workspace: @workspace %>
 
-    <!-- 右側の地図表示 -->
     <%= render 'workspace_map', workspace: @workspace %>
   </div>
 
-  <!-- ユーザーの評価を見るボタン -->
   <div class="flex items-center justify-center mx-16 mt-4 mb-8">
-    <button id="toggle-reviews" class="btn btn-sm">ユーザーの評価を見る</button>
+    <button id="toggle-reviews" class="btn btn-sm"><%= t('workspaces.show.view_reviews_button') %></button>
   </div>
 
-  <!-- 評価情報を表示するコンテナ -->
+
   <div id="reviews-container" class="hidden">
     <%= render 'reviews_by_others', workspace: @workspace %>
   </div>

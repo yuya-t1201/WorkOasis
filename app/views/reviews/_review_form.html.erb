@@ -3,31 +3,29 @@
     <div class="border-l-4 border-indigo-500 pl-4 mx-auto w-max">
       <h2 class="text-3xl font-main mt-32 mb-20"><%= @workspace.title %></h2>
     </div>
-    <!-- 星のアイコンを追加 -->
     <div class="flex items-center justify-center space-x-2 mb-10">
-      <!-- ここに星のアイコンを表示 -->
       <i class="star fa-solid fa-star" data-rating="1" style="color: #ccc; font-size: 5rem;"></i>
       <i class="star fa-solid fa-star" data-rating="2" style="color: #ccc; font-size: 5rem;"></i>
       <i class="star fa-solid fa-star" data-rating="3" style="color: #ccc; font-size: 5rem;"></i>
       <i class="star fa-solid fa-star" data-rating="4" style="color: #ccc; font-size: 5rem;"></i>
       <i class="star fa-solid fa-star" data-rating="5" style="color: #ccc; font-size: 5rem;"></i>
     </div>
-    <!-- hidden inputに評価値を格納 -->
     <%= form.hidden_field :rating, id: 'review_rating' %>
   </div>
 
   <div class="mb-4 text-center">
-    <!-- コメント欄を追加 -->
     <div class="text-center mb-2">
-      <%= form.label :comment, 'コメント' %>
+      <%= form.label :comment, t('reviews.new.comment_label') %>
     </div>
     <%= form.text_area :comment, class: 'block w-64 p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mx-auto' %>
   </div>
 
   <div class="text-center">
-    <%= form.submit '投稿', class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    <%= form.submit t('reviews.new.submit_button'), class: 'px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-white active:bg-indigo-800 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
   </div>
 <% end %>
+
+<%= render 'star_rating' %>
 
 <script>
   $(document).ready(function() {
