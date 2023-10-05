@@ -1,0 +1,38 @@
+ja:
+  activerecord:
+    models:
+      authentication: '認証情報'
+      like: 'いいね'
+      review: 'レビュー'
+      user: 'ユーザー'
+      workspace: 'ワークスペース'
+    attributes:
+      authentication:
+        user_id: 'ユーザーID'
+        provider: 'プロバイダー'
+        uid: 'UID'
+      like:
+        user_id: 'ユーザーID'
+        workspace_id: 'ワークスペースID'
+      review:
+        comment: 'コメント'
+        user_id: 'ユーザーID'
+        workspace_id: 'ワークスペースID'
+        rating: '評価'
+      user:
+        email: 'メールアドレス'
+        crypted_password: '暗号化パスワード'
+        salt: 'ソルト'
+        name: '名前'
+        avatar: 'アバター'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      workspace:
+        title: 'タイトル'
+        address: '住所'
+        price: '価格'
+        facilities: '施設'
+        recommendation: 'おすすめポイント'
+        latitude: '緯度'
+        longitude: '経度'
+        workspace_image: 'ワークスペース画像'

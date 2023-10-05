@@ -1,32 +1,33 @@
-<%= form_with(model: user, url: users_path, class: "mt-8 space-y-6") do |form| %>
-      <% if @user.errors.any? %>
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded">
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+<%= form_with(model: user, url: users_path, data: { turbo: false }, class: "mt-8 space-y-6") do |form| %>
+  <% if @user.errors.any? %>
+  <div class="bg-red-400 border border-red-800 text-red-700 px-4 py-2 rounded">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-      <div class="mt-4">
-        <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.text_field :name, class: "mt-1 input w-full", required: true %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.email_field :email, class: "mt-1 input w-full", required: true %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.password_field :password, class: "mt-1 input w-full", required: true %>
-      </div>
-      <div class="mt-4">
-        <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
-        <%= form.password_field :password_confirmation, class: "mt-1 input w-full", required: true %>
-      </div>
-      <div class="mt-6">
-        <button type="submit" class="btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white w-full">
-          登録する
-        </button>
-      </div>
-    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="mt-4">
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :name, class: "mt-1 input w-full", required: true %>
+  </div>
+  <div class="mt-4">
+    <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.email_field :email, class: "mt-1 input w-full", required: true %>
+  </div>
+  <div class="mt-4">
+    <%= form.label :password, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.password_field :password, class: "mt-1 input w-full", required: true %>
+  </div>
+  <div class="mt-4">
+    <%= form.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.password_field :password_confirmation, class: "mt-1 input w-full", required: true %>
+  </div>
+  <div class="mt-6">
+    <button type="submit" class="btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white w-full">
+      <%= t('lp.section5.call_to_action') %>
+    </button>
+  </div>
+<% end %>
