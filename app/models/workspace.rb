@@ -13,11 +13,13 @@
 #  workspace_image :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 # Indexes
 #
 #  index_workspaces_on_address  (address) UNIQUE
 #  index_workspaces_on_title    (title) UNIQUE
+#  index_workspaces_on_user_id  (user_id)
 #
 class Workspace < ApplicationRecord
   belongs_to :user
@@ -26,8 +28,8 @@ class Workspace < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
-  validates :title, presence: true, length: { maximum: 100 }
-  validates :address, presence: true
+  validates :title, presence: true, length: { maximum: 100 }, uniqueness: true
+  validates :address, presence: true, uniqueness: true
   validates :recommendation, presence: true
 
   mount_uploader :workspace_image, ImageUploader
