@@ -22,5 +22,5 @@ class Like < ApplicationRecord
   belongs_to :user
   belongs_to :workspace
 
-  validates_uniqueness_of :workspace_id, scope: :user_id  
+  validates :workspace_id, uniqueness: { scope: :user_id }  
 end
