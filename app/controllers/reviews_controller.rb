@@ -5,6 +5,11 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @workspace = @review.workspace
+  end
+
   def create
     @review = Review.new(review_params)
     @review.rating = params[:review][:rating].to_i
@@ -13,11 +18,6 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-    @review = Review.find(params[:id])
-    @workspace = @review.workspace
   end
 
   def update

@@ -3,13 +3,13 @@ class WorkspacesController < ApplicationController
     @workspaces = Workspace.all
   end
 
+  def show
+    @workspace = Workspace.find(params[:id])
+  end
   def new
     @workspace = Workspace.new
   end
 
-  def show
-    @workspace = Workspace.find(params[:id])
-  end
 
 
   def create
