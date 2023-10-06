@@ -5,7 +5,7 @@
         type="text"
         id="search-input"
         class="w-96 rounded-lg border border-gray-300 px-4 py-2 bg-white"
-        placeholder="検索するカフェのキーワードを入力してください"
+        placeholder="実装途中"
       />
       <button
         id="search-button"
@@ -26,8 +26,7 @@
     }
   </style>
 
-
-  <script>
+<script>
   let map;
   let searchInput;
   let searchButton;
@@ -139,7 +138,9 @@
 
     infoWindows.push(infowindow);
   }
+
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
 
