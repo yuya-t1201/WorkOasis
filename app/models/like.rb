@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_likes_on_user_id       (user_id)
-#  index_likes_on_workspace_id  (workspace_id)
+#  index_likes_on_user_id                   (user_id)
+#  index_likes_on_user_id_and_workspace_id  (user_id,workspace_id) UNIQUE
+#  index_likes_on_workspace_id              (workspace_id)
 #
 # Foreign Keys
 #
