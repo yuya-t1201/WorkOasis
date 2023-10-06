@@ -1,5 +1,16 @@
 <div class="container mx-auto px-4 h-full mb-0">
 
+  <nav class="mb-4">
+  <ol class="list-none p-0 inline-flex">
+    <li class="flex items-center mt-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+  </ol>
+  </nav>
+
+
+
   <div class="flex items-center justify-center mr-16 ml-12 mt-16 mb-8">
     <div class="border-l-4 border-indigo-500 pl-4">
       <h2 class="font-main text-2xl mb-2"><%= @workspace.title %></h2>
