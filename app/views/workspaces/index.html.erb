@@ -1,35 +1,20 @@
-<body class="bg-primary">
-  <div class="container mx-auto py-8">
-    <div class="mb-8 flex justify-center">
-      <input
-        type="text"
-        id="search-input"
-        class="w-96 rounded-lg border border-gray-300 px-4 py-2 bg-white"
-        placeholder="実装途中"
-      />
-      <button
-        id="search-button"
-        class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-lg"
-      >
-        検索
-      </button>
-    </div>
-
-    <div class="flex justify-center">
-      <div id="map" class="w-full h-screen mb-4"></div>
-    </div>
+<div class="container mx-auto py-8">
+  <div class="mb-8 flex justify-center">
+    <p class="text-black font-semibold"><%= t('workspaces.index.click_to_explore') %></p>
   </div>
+  <div class="flex justify-center">
+    <div id="map" class="w-full h-screen mb-4"></div>
+  </div>
+</div>
 
-  <style>
-    #map {
-      height: calc(100vh - 10rem);
-    }
-  </style>
+<style>
+  #map {
+    height: calc(100vh - 10rem);
+  }
+</style>
 
 <script>
   let map;
-  let searchInput;
-  let searchButton;
   let infoWindows = [];
 
   function initMap() {
@@ -73,75 +58,9 @@
 
       infoWindows.push(infowindow);
     });
-
-    searchInput = document.getElementById('search-input');
-    searchButton = document.getElementById('search-button');
-
-    searchButton.addEventListener('click', searchCafe);
   }
-
-  function searchCafe() {
-    const keyword = searchInput.value;
-
-    if (keyword === '') {
-      alert('検索キーワードを入力してください');
-      return;
-    }
-
-    const request = {
-      location: map.getCenter(),
-      radius: 5000,
-      keyword: keyword
-    };
-
-    const service = new google.maps.places.PlacesService(map);
-
-    service.nearbySearch(request, handleSearchResults);
-  }
-
-  function handleSearchResults(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
-      }
-    }
-  }
-
-  function createMarker(place) {
-    const marker = new google.maps.Marker({
-      position: place.geometry.location,
-      map: map,
-      title: place.name
-    });
-
-    const infowindow = new google.maps.InfoWindow({
-      content: place.name
-    });
-
-    marker.addListener('click', function () {
-      if (infowindow.getMap()) {
-        infowindow.close();
-        map.setCenter(marker.getPosition());
-        map.setZoom(12);
-      } else {
-        // 選択されたマーカー以外の情報ウィンドウを閉じる
-        infoWindows.forEach(window => window.close());
-
-        // 詳細ページへのリンクを作成
-        const workspaceLink = `<a href="/workspaces/${place.id}">${place.name}</a>`;
-        infowindow.setContent(workspaceLink);
-        infowindow.open(map, marker);
-        map.setCenter(marker.getPosition());
-        map.setZoom(15); // 詳細ページへのリンクを表示するためにズームイン
-      }
-    });
-
-    infoWindows.push(infowindow);
-  }
-
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
 
-</body>
