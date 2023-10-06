@@ -6,11 +6,10 @@ class WorkspacesController < ApplicationController
   def show
     @workspace = Workspace.find(params[:id])
   end
+
   def new
     @workspace = Workspace.new
   end
-
-
 
   def create
     @workspace = Workspace.new(workspace_params)
@@ -52,5 +51,4 @@ class WorkspacesController < ApplicationController
   def workspace_params
     params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude)
   end
-
 end
