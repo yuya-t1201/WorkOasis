@@ -40,6 +40,8 @@ ja:
       password_too_short: "パスワードは最低%{count}文字以上である必要があります。"
       name_blank: "名前を入力してください."
   workspaces:
+    index:
+      click_to_explore: "気になったワークスペースをクリックして調べてみましょう！"
     new:
       title: "ワークスペース登録"
       form_title: "ワークスペース情報入力"
