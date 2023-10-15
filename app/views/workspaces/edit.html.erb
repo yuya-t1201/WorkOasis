@@ -1,0 +1,79 @@
+<div class="flex items-center justify-center ">
+  <div class="w-full max-w-md mt-16">
+    <h1 class="text-3xl font-bold text-center mb-4 text-gray-800"><%= t('workspaces.new.title') %></h1>
+
+    <div class="flex items-center justify-center mt-4">
+      <%= button_to t('workspaces.edit.delete_button'), workspace_path(@workspace), method: :delete, data: { turbo: "false" }, form: { onSubmit: "return check()" }, class: "btn btn-sm bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-white" %>
+    </div>
+
+    <%= form_with model: @workspace,  data: { turbo: false } do |f| %>
+      
+    <%= render 'shared/error_messages', object: @workspace %>
+
+      <div class="my-4">
+        <%= f.label t('workspaces.new.name_label'), class: "block font-semibold" %>
+        <%= f.text_field :title, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label t('workspaces.new.address_label'), class: "block font-semibold" %>
+        <%= f.text_field :address, class: "input w-full", placeholder: t('placeholders.workspace.address') %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label t('workspaces.new.price_label'), class: "block font-semibold" %>
+        <%= f.select :price, Workspace.prices.keys.map { |price| [t("activerecord.attributes.workspace.prices.#{price}"), price] }, {}, class: "input w-full" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label t('workspaces.new.recommendation_label'), class: "block font-semibold" %>
+        <%= f.text_area :recommendation, class: "input w-full h-32" %>
+      </div>
+
+      <div class="my-4">
+        <%= f.label t('workspaces.new.image_label'), class: "block font-semibold" %>
+        <div id="image_preview" class="image-preview">
+          <% if @workspace.workspace_image.present? %>
+            <%= image_tag @workspace.workspace_image.url, class: "max-w-xs max-h-48" %>
+          <% end %>
+        </div>
+        <%= f.file_field :workspace_image, id: "workspace_image", class: "mt-1" %>
+      </div>
+  
+      <div class="my-4 flex justify-between items-center">
+        <%= f.submit t('workspaces.edit.update_button'), class: "btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // 画像選択時にプレビューを表示する
+    $('#workspace_image').on('change', function (e) {
+      var input = $(this)[0];
+      if (input.files && input.files[0]) {
+        $('#image_preview').empty();
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var imagePreview = $('<div>').addClass('relative mx-2 mt-2');
+          var image = $('<img>').attr('src', e.target.result).addClass('max-w-xs max-h-48').css('object-fit', 'cover');
+
+          imagePreview.append(image);
+          $('#image_preview').append(imagePreview);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  });
+  function check(){
+    if(window.confirm('本当に削除しますか？')){ 
+      return true;
+    }
+    else{
+      window.alert('キャンセルされました'); 
+      return false; 
+    }
+  }
+</script>

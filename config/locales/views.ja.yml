@@ -65,12 +65,16 @@ ja:
       edit_review_button: "編集"
       no_reviews: "評価はまだありません"
       back_to_map: "マップに戻る"
+      edit_button: "投稿を編集する"
     list:
       title: "ワークスペース一覧"
       sort_label: "並び替え"
       latest_option: "新着順"
       old_option: "古い順"
       highest_rated_option: "評価順"
+    edit:
+      update_button: "更新する"
+      delete_button: "削除する"
   reviews:
     new:
       title: "評価を投稿する"

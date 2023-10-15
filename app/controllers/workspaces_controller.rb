@@ -22,6 +22,25 @@ class WorkspacesController < ApplicationController
     end
   end
 
+  def edit
+    @workspace = Workspace.find(params[:id])
+  end
+
+  def update
+    @workspace = Workspace.find(params[:id])
+    if @workspace.update(workspace_params)
+      redirect_to workspace_path(@workspace), notice: 'ワークスペースが更新されました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @workspace = Workspace.find(params[:id])
+    @workspace.destroy
+    redirect_to root_path, notice: 'ワークスペースが削除されました'
+  end
+
   def list
     if params[:latest]
       @workspaces = Workspace.latest.page(params[:page]).per(10)
