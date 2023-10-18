@@ -27,11 +27,30 @@
 
     const workspaces = <%= raw @workspaces.to_json %>;
 
+    const spotTypeColors = {
+    'cafe': '#D2691E', // カフェ: 明るい茶色
+    'library': '#00FF00', // 図書館: 明るい緑色
+    'coworking_space': '#0000FF', // コワーキングスペース: 青色
+    'school': '#FFFF00', // 学校: 明るい黄色
+    'others': '#A9A9A9' // その他: 明るい灰色
+  };
+
     workspaces.forEach(workspace => {
+      const spotTypeColor = spotTypeColors[workspace.spot_type];
+      const customIcon = {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        scale: 6,
+        fillColor: spotTypeColor,
+        fillOpacity: 1,
+        strokeColor: '#000000', // 輪郭線の色は固定で設定
+        strokeWeight: 2,
+      };
+
       const marker = new google.maps.Marker({
         position: { lat: parseFloat(workspace.latitude), lng: parseFloat(workspace.longitude) },
         map: map,
-        title: workspace.title
+        title: workspace.title,
+        icon: customIcon,
       });
 
       const infowindow = new google.maps.InfoWindow({
@@ -60,6 +79,7 @@
     });
   }
 </script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 

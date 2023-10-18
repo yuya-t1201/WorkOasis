@@ -9,6 +9,7 @@
 #  longitude       :float
 #  price           :integer          default("1~500")
 #  recommendation  :text
+#  spot_type       :string           not null
 #  title           :string(100)      not null
 #  workspace_image :string
 #  created_at      :datetime         not null
