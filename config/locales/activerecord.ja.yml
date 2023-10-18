@@ -36,3 +36,4 @@ ja:
         latitude: '緯度'
         longitude: '経度'
         workspace_image: 'ワークスペース画像'
+        spot_type: 'スポットの種類'

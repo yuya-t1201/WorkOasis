@@ -32,6 +32,7 @@ class Workspace < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }, uniqueness: true
   validates :address, presence: true, uniqueness: true
   validates :recommendation, presence: true
+  validates :spot_type, presence: true
 
   mount_uploader :workspace_image, ImageUploader
 
