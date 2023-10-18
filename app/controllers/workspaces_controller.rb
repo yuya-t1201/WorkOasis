@@ -68,6 +68,6 @@ class WorkspacesController < ApplicationController
   private
 
   def workspace_params
-    params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude)
+    params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude, :spot_type)
   end
 end

@@ -16,6 +16,39 @@
       </div>
 
       <div class="my-4">
+        <%= f.label t('workspaces.new.spot_type_label'), class: "block font-semibold" %>
+        <div class="flex items-center">
+          <div class="mr-4 text-center">
+            <%= f.radio_button :spot_type, 'cafe', class: "mr-1" %>
+            <%= f.label :cafe, "カフェ", class: "inline-block" %>
+          </div>
+
+          <div class="mr-4 text-center">
+            <%= f.radio_button :spot_type, 'library', class: "mr-1" %>
+            <%= f.label :library, "図書館", class: "inline-block" %>
+          </div>
+
+          <div class="flex">
+            <div class="mr-4 text-center">
+              <%= f.radio_button :spot_type, 'coworking_space', class: "mr-1" %>
+              <%= f.label :coworking_space, "コワーキングスペース", class: "inline-block text-sm" %>
+            </div>
+
+            <div class="mr-4 text-center">
+              <%= f.radio_button :spot_type, 'school', class: "mr-1" %>
+              <%= f.label :school, "学校", class: "inline-block" %>
+            </div>
+
+            <div class="mr-4 text-center">
+              <%= f.radio_button :spot_type, 'others', class: "mr-1" %>
+              <%= f.label :others, "その他", class: "inline-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="my-4">
         <%= f.label t('workspaces.new.price_label'), class: "block font-semibold" %>
         <%= f.select :price, Workspace.prices.keys.map { |price| [t("activerecord.attributes.workspace.prices.#{price}"), price] }, {}, class: "input w-full" %>
       </div>

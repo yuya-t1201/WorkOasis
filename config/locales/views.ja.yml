@@ -52,6 +52,7 @@ ja:
       image_label: "写真"
       submit_button: "登録する"
       errors_header: "エラーが発生しました:"
+      spot_type_label: "スポットの種類"
     show:
       rate_workspace_button: "評価する"
       favorite_remove_button: "お気に入り済み"
