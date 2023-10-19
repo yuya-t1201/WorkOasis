@@ -2,6 +2,12 @@
   <div class="mb-8 flex justify-center">
     <p class="text-black font-semibold"><%= t('workspaces.index.click_to_explore') %></p>
   </div>
+
+  <div class="mb-4 flex justify-center">
+    <input id="searchBox" type="text" placeholder="都市名、住所、施設名、地名で検索" class="input input-bordered w-full input-sm max-w-xs mr-2" />
+    <button class="btn btn-sm" onclick="searchLocationAndMove()"><%= t('workspaces.index.search') %></button>
+  </div>
+
   <div class="flex justify-center">
     <div id="map" class="w-full h-screen mb-4"></div>
   </div>
@@ -39,7 +45,7 @@
       const spotTypeColor = spotTypeColors[workspace.spot_type];
       const customIcon = {
         path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-        scale: 6,
+        scale: 5,
         fillColor: spotTypeColor,
         fillOpacity: 1,
         strokeColor: '#000000', // 輪郭線の色は固定で設定
@@ -78,8 +84,20 @@
       infoWindows.push(infowindow);
     });
   }
-</script>
 
+  function searchLocationAndMove() {
+    let address = document.getElementById('searchBox').value;
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            map.setZoom(12);
+        } else {
+            alert('地域が見つかりませんでした: ' + status);
+        }
+    });
+  }
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
