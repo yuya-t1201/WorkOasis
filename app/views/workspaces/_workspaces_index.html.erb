@@ -1,6 +1,6 @@
 <% workspaces.each do |workspace| %>
   <div class="col-md-4 mb-4">
-    <div class="p-3 border border-secondary border-2 rounded-lg shadow mx-auto bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 w-2/3">
+    <div class="p-3 border border-secondary border-2 rounded-lg shadow mx-auto bg-neutral w-2/3">
       <%= link_to workspace_path(workspace) do %>
         <div class="flex justify-between items-center">
           <h5 class="text-2xl font-semibold mb-2 text-center pb-1 border-bottom border-secondary mx-auto"><%= workspace.title %></h5>
