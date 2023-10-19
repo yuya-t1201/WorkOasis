@@ -38,7 +38,7 @@ class WorkspacesController < ApplicationController
   def destroy
     @workspace = Workspace.find(params[:id])
     @workspace.destroy
-    redirect_to root_path, notice: 'ワークスペースが削除されました'
+    redirect_to workspaces_path, notice: 'ワークスペースが削除されました'
   end
 
   def list
