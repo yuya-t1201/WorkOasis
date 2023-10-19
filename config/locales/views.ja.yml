@@ -42,6 +42,7 @@ ja:
   workspaces:
     index:
       click_to_explore: "気になったワークスペースをクリックして調べてみましょう！"
+      search: "検索"
     new:
       title: "ワークスペース登録"
       form_title: "ワークスペース情報入力"
