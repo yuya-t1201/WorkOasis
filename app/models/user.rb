@@ -3,9 +3,12 @@
 # Table name: users
 #
 #  id               :bigint           not null, primary key
+#  address          :string
 #  avatar           :string
 #  crypted_password :string
 #  email            :string           not null
+#  latitude         :float
+#  longitude        :float
 #  name             :string
 #  salt             :string
 #  created_at       :datetime         not null
