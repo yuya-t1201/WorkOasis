@@ -4,7 +4,6 @@
 #
 #  id              :bigint           not null, primary key
 #  address         :string(255)      not null
-#  facilities      :string(255)      default([]), is an Array
 #  latitude        :float
 #  longitude       :float
 #  price           :integer          default("1~500")
@@ -18,8 +17,6 @@
 #
 # Indexes
 #
-#  index_workspaces_on_address  (address) UNIQUE
-#  index_workspaces_on_title    (title) UNIQUE
 #  index_workspaces_on_user_id  (user_id)
 #
 class Workspace < ApplicationRecord
@@ -28,6 +25,8 @@ class Workspace < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
+  has_many :workspace_tags, dependent: :destroy
+  has_many :tags, through: :workspace_tags
 
   validates :title, presence: true, length: { maximum: 100 }, uniqueness: true
   validates :address, presence: true, uniqueness: true

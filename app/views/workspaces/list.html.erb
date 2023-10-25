@@ -1,6 +1,7 @@
 <h1 class="text-center my-10"><%= t('workspaces.list.title') %></h1>
 
-<div class="text-center my-4"> 
+<div class="flex justify-center items-center my-4"> 
+  <button class="btn btn-sm bg-neutral mr-4" onclick="toggleTagList()">詳細検索</button>
   <div class="dropdown dropdown-right inline-block">
     <label tabindex="0" class="btn btn-sm m-1 bg-neutral"><%= t('workspaces.list.sort_label') %></label>
     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -11,8 +12,43 @@
   </div>
 </div>
 
-<div class="container-fluid text-center px-0"> <!-- 右側の余白を削除 -->
-  <div class="row justify-content-center mb-4">
+<div class="flex justify-center items-center my-4" id="search-button-section" style="display: none;"> 
+  <%= form_with(url: { action: "list" }, method: "get", local: true) do |form| %>
+    <div class="container mx-auto text-center" id="tag-list" style="display: none;"> 
+      <div class="mb-4">
+        <div class="grid grid-cols-3 gap-4">
+          <% Tag.all.each do |tag| %>
+            <div class="text-center">
+              <%= check_box_tag 'workspace[tag_ids][]', tag.id, params.dig(:workspace, :tag_ids)&.include?(tag.id), id: "workspace_tag_#{tag.id}" %>
+              <%= label_tag "workspace_tag_#{tag.id}", tag.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <%= form.submit "検索", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", id: "search-button" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container mx-auto text-center"> 
+  <div class="mb-4">
     <%= render 'workspaces_index', workspaces: @workspaces %>
   </div>
 </div>
+
+
+<script>
+  function toggleTagList() {
+    const tagList = document.getElementById("tag-list");
+    const searchButtonSection = document.getElementById("search-button-section");
+    if (tagList.style.display === "none") {
+      tagList.style.display = "block";
+      searchButtonSection.style.display = "block";
+    } else {
+      tagList.style.display = "none";
+      searchButtonSection.style.display = "none";
+    }
+  }
+</script>

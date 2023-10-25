@@ -1,0 +1,11 @@
+<!-- tag_filter.html.erb -->
+
+<div class="flex flex-wrap justify-center my-4">
+  <% @filtered_items.each do |item| %>
+    <div class="m-2">
+      <!-- アイテムの表示 -->
+      <p><%= item.name %></p>
+      <!-- 他の属性の表示 -->
+    </div>
+  <% end %>
+</div>

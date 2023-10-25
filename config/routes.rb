@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :workspaces do
     collection do
       get 'list'
+      get 'tag_filter'
     end
     
     member do

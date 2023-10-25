@@ -4,7 +4,6 @@
 #
 #  id              :bigint           not null, primary key
 #  address         :string(255)      not null
-#  facilities      :string(255)      default([]), is an Array
 #  latitude        :float
 #  longitude       :float
 #  price           :integer          default("1~500")
@@ -18,8 +17,6 @@
 #
 # Indexes
 #
-#  index_workspaces_on_address  (address) UNIQUE
-#  index_workspaces_on_title    (title) UNIQUE
 #  index_workspaces_on_user_id  (user_id)
 #
 require 'rails_helper'

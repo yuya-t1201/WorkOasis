@@ -18,9 +18,7 @@
 #  fk_rails_...  (tag_id => tags.id)
 #  fk_rails_...  (workspace_id => workspaces.id)
 #
-FactoryBot.define do
-  factory :workspace_tag do
-    workspace { nil }
-    tag { nil }
-  end
+class WorkspaceTag < ApplicationRecord
+  belongs_to :workspace
+  belongs_to :tag
 end

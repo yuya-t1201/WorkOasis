@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_090352) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_054804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,13 +36,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_090352) do
 
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
+    t.integer "rating", default: 0, null: false
+    t.integer "integer", default: 0, null: false
     t.bigint "user_id", null: false
     t.bigint "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rating", default: 0, null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["workspace_id"], name: "index_reviews_on_workspace_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,27 +57,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_090352) do
     t.string "crypted_password"
     t.string "salt"
     t.string "name"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "workspace_tags", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_workspace_tags_on_tag_id"
+    t.index ["workspace_id"], name: "index_workspace_tags_on_workspace_id"
   end
 
   create_table "workspaces", force: :cascade do |t|
     t.string "title", limit: 100, null: false
     t.string "address", limit: 255, null: false
     t.integer "price", default: 0
-    t.string "facilities", limit: 255, default: [], array: true
     t.text "recommendation"
+    t.string "workspace_image"
     t.float "latitude"
     t.float "longitude"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "workspace_image"
-    t.integer "user_id"
     t.string "spot_type", null: false
-    t.index ["address"], name: "index_workspaces_on_address", unique: true
-    t.index ["title"], name: "index_workspaces_on_title", unique: true
     t.index ["user_id"], name: "index_workspaces_on_user_id"
   end
 
@@ -78,4 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_090352) do
   add_foreign_key "likes", "workspaces"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "workspaces"
+  add_foreign_key "workspace_tags", "tags"
+  add_foreign_key "workspace_tags", "workspaces"
 end
