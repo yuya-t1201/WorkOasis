@@ -48,6 +48,8 @@ class WorkspacesController < ApplicationController
       @workspaces = Workspace.old.page(params[:page]).per(10)
     elsif params[:highest_rated]
       @workspaces = Workspace.highest_rated.page(params[:page]).per(10)
+    elsif params[:workspace] && params[:workspace][:tag_ids].present?
+      @workspaces = Workspace.joins(:tags).where(tags: { id: params[:workspace][:tag_ids] }).distinct.page(params[:page]).per(10)
     else
       @workspaces = Workspace.latest.page(params[:page]).per(10)
     end
@@ -65,9 +67,14 @@ class WorkspacesController < ApplicationController
     redirect_to @workspace, notice: 'ワークスペースのお気に入りを解除しました'
   end
 
+  def tag_filter
+    @tag = Tag.find(params[:tag_id])
+    @workspaces = @tag.workspaces.page(params[:page]).per(10)
+  end
+
   private
 
   def workspace_params
-    params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude, :spot_type)
+    params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude, :spot_type, tag_ids: [])
   end
 end

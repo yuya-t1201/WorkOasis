@@ -18,9 +18,8 @@
 #  fk_rails_...  (tag_id => tags.id)
 #  fk_rails_...  (workspace_id => workspaces.id)
 #
-FactoryBot.define do
-  factory :workspace_tag do
-    workspace { nil }
-    tag { nil }
-  end
+require 'rails_helper'
+
+RSpec.describe WorkspaceTag, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

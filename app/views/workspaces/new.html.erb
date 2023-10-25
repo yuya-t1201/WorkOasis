@@ -47,6 +47,18 @@
         </div>
       </div>
 
+      <div class="my-4">
+        <%= f.label "こだわり", class: "block font-semibold" %>
+        <div class="flex flex-wrap items-start">
+          <% Tag.all.each do |tag| %>
+            <div class="mr-4 mt-2">
+              <%= check_box_tag 'workspace[tag_ids][]', tag.id, @workspace.tag_ids.include?(tag.id), id: "workspace_tag_#{tag.id}", class: "form-checkbox h-5 w-5 text-indigo-600" %>
+              <%= label_tag "workspace_tag_#{tag.id}", tag.name, class: "inline-block text-sm text-gray-700" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
 
       <div class="my-4">
         <%= f.label t('workspaces.new.price_label'), class: "block font-semibold" %>
