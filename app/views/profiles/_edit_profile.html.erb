@@ -12,6 +12,11 @@
       </div>
 
       <div class="my-4">
+        <%= f.label :address, class: "block font-semibold" %>
+        <%= f.text_field :address, class: "input w-full", required: true, placeholder: "例: 東京都千代田区" %>
+      </div>
+
+      <div class="my-4">
         <%= f.label :avatar, class: "block font-semibold" %>
         <div id="avatar_preview" class="image-preview">
           <% if current_user.avatar? %>
