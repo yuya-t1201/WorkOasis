@@ -23,6 +23,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_many :authentications, dependent: :destroy
   has_many :workspaces, dependent: :destroy
   accepts_nested_attributes_for :authentications
