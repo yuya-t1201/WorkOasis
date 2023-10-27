@@ -16,8 +16,6 @@ class WorkspacesController < ApplicationController
     @workspace.user = current_user
 
     if @workspace.save
-       ActionCable.server.broadcast 'workspace_notifications_channel', { message: '新しいWorkspaceが登録されました' }
-
       redirect_to workspace_path(@workspace), notice: 'ワークスペースが登録されました'
     else
       render :new
