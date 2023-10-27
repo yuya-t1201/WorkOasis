@@ -19,9 +19,11 @@
     <% if controller_name != 'pages' %>
       <%= render 'shared/header' %>
     <% end %>
+
       <%= render 'shared/flash' %>
       <%= yield %>
       <%= render 'shared/footer' %>
+      
   </body>
 
 </html>
