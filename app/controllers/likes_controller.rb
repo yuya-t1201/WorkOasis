@@ -1,14 +1,19 @@
 class LikesController < ApplicationController
   before_action :require_login
+  before_action :set_workspace
 
   def create
-    workspace = Workspace.find(params[:id])
-    current_user.like(workspace)
+    current_user.like(@workspace)
   end
 
   def destroy
-    workspace = Workspace.find(params[:id])
-    current_user.unlike(workspace)
+    current_user.unlike(@workspace)
+  end
+
+  private
+
+  def set_workspace
+    @workspace = Workspace.find(params[:id])
   end
 
 end
