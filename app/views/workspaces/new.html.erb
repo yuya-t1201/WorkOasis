@@ -20,28 +20,28 @@
         <div class="flex items-center">
           <div class="mr-4 text-center">
             <%= f.radio_button :spot_type, 'cafe', class: "mr-1" %>
-            <%= f.label :cafe, "カフェ", class: "inline-block" %>
+            <%= f.label :cafe, t('workspaces.new.spot_type_cafe'), class: "inline-block" %>
           </div>
 
           <div class="mr-4 text-center">
             <%= f.radio_button :spot_type, 'library', class: "mr-1" %>
-            <%= f.label :library, "図書館", class: "inline-block" %>
+            <%= f.label :library, t('workspaces.new.spot_type_library'), class: "inline-block" %>
           </div>
 
           <div class="flex">
             <div class="mr-4 text-center">
               <%= f.radio_button :spot_type, 'coworking_space', class: "mr-1" %>
-              <%= f.label :coworking_space, "コワーキングスペース", class: "inline-block text-sm" %>
+              <%= f.label :coworking_space, t('workspaces.new.spot_type_coworking_space'), class: "inline-block text-sm" %>
             </div>
 
             <div class="mr-4 text-center">
               <%= f.radio_button :spot_type, 'school', class: "mr-1" %>
-              <%= f.label :school, "学校", class: "inline-block" %>
+              <%= f.label :school, t('workspaces.new.spot_type_school'), class: "inline-block" %>
             </div>
 
             <div class="mr-4 text-center">
               <%= f.radio_button :spot_type, 'others', class: "mr-1" %>
-              <%= f.label :others, "その他", class: "inline-block" %>
+              <%= f.label :others, t('workspaces.new.spot_type_others'), class: "inline-block" %>
             </div>
           </div>
         </div>
