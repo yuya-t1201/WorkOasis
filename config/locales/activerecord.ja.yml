@@ -37,3 +37,9 @@ ja:
         longitude: '経度'
         workspace_image: 'ワークスペース画像'
         spot_type: 'スポットの種類'
+        spot_types:
+          cafe: "カフェ"
+          library: "図書館"
+          coworking_space: "コワーキングスペース"
+          school: "学校"
+          others: "その他"

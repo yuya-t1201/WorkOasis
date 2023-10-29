@@ -54,6 +54,11 @@ ja:
       submit_button: "登録する"
       errors_header: "エラーが発生しました:"
       spot_type_label: "スポットの種類"
+      spot_type_cafe: "カフェ"
+      spot_type_library: "図書館"
+      spot_type_coworking_space: "コワーキングスペース"
+      spot_type_school: "学校"
+      spot_type_others: "その他"
     show:
       rate_workspace_button: "評価する"
       favorite_remove_button: "お気に入り済み"

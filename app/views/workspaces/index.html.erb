@@ -60,7 +60,7 @@
       });
 
       const infowindow = new google.maps.InfoWindow({
-        content: workspace.title
+        content: workspace.title,
       });
 
       marker.addListener('click', function () {
@@ -74,7 +74,14 @@
 
           // 詳細ページへのリンクを作成
           const workspaceLink = `<a href="/workspaces/${workspace.id}">${workspace.title}</a>`;
-          infowindow.setContent(workspaceLink);
+          infowindow.setContent(
+              `<div style="color: #333; font-family: Arial, sans-serif; padding: 10px;">
+                <h3 style="margin-bottom: 10px; font-size: 20px;">${workspace.title}</h3>
+                <p style="margin-bottom: 2px;"><strong>スポットタイプ:</strong> ${workspace.spot_type}</p>
+                <p style="margin-bottom: 5px;"><strong>住所:</strong> ${workspace.address}</p>
+                <a href="/workspaces/${workspace.id}" style="text-decoration: none; color: #007BFF;">詳細を見る</a>
+              </div>`
+          );
           infowindow.open(map, marker);
           map.setCenter(marker.getPosition());
           map.setZoom(15); // 詳細ページへのリンクを表示するためにズームイン
