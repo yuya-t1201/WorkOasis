@@ -1,6 +1,15 @@
-<h1 class="text-center my-10"><%= t('workspaces.list.title') %></h1>
+<nav class="ml-8 mt-8">
+  <ol class="list-none p-0 inline-flex">
+    <li class="flex items-center mt-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+  </ol>
+</nav>
 
-<%= search_form_for @q, url: list_workspaces_path do |f| %>
+<h1 class="text-center my-10 -mt-5"><%= t('workspaces.list.title') %></h1>
+
+<%= search_form_for @q, url: search_result_workspaces_path do |f| %>
   <div class="flex justify-center"> 
     <div class="relative flex rounded-md">
       <div data-controller="autocomplete" data-autocomplete-url-value="/workspaces/search" role="combobox">
@@ -19,7 +28,7 @@
 <% end %>
 
 <div class="flex justify-center items-center my-4"> 
-  <button class="btn btn-sm bg-neutral mr-4" onclick="toggleTagList()">詳細検索</button>
+  <button class="btn btn-sm bg-neutral mr-4" onclick="toggleTagList()">タグ検索</button>
   <div class="dropdown dropdown-right inline-block">
     <label tabindex="0" class="btn btn-sm m-1 bg-neutral"><%= t('workspaces.list.sort_label') %></label>
     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -31,7 +40,7 @@
 </div>
 
 <div class="flex justify-center items-center my-4" id="search-button-section" style="display: none;"> 
-  <%= form_with(url: { action: "list" }, method: "get", local: true) do |form| %>
+  <%= form_with(url: { action: "tag_filter" }, method: "get", local: true) do |form| %>
     <div class="container mx-auto text-center" id="tag-list" style="display: none;"> 
       <div class="mb-4">
         <div class="grid grid-cols-3 gap-4">

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'list'
       get 'tag_filter'
       get 'search'
+      get 'search_result' 
     end
     
     member do
