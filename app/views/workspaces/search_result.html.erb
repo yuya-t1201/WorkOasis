@@ -1,0 +1,30 @@
+<nav class="m-8">
+  <ul class="list-none p-0">
+    <li class="mb-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+    <li class="mb-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to '一覧に戻る', list_workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+  </ul>
+</nav>
+
+<div class="container mx-auto text-center -mt-5"> 
+  <h2 class="text-2xl font-bold mb-4">検索結果</h2>
+
+  <div class="text-center mb-4">
+    <p class="text-lg">検索結果件数: <%= @workspaces_count %>件</p>
+  </div>
+  <div class="text-center mb-8">
+    <p class="text-lg">検索キーワード: <%= @search_keyword %></p>
+  </div>
+
+  <div class="container mx-auto text-center"> 
+    <div class="mb-4">
+      <%= render 'workspaces_index', workspaces: @workspaces %>
+    </div>
+  </div>
+
+<%= paginate @workspaces %>

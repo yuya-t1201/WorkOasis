@@ -46,7 +46,8 @@ class WorkspacesController < ApplicationController
     elsif params[:highest_rated]
       @q.result.highest_rated.page(params[:page]).per(10)
     elsif params[:workspace] && params[:workspace][:tag_ids].present?
-      @q.result.joins(:tags).where(tags: { id: params[:workspace][:tag_ids] }).distinct.page(params[:page]).per(10)
+      tag_ids = params[:workspace][:tag_ids]
+      @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}").page(params[:page]).per(10)
     else
       @q.result.latest.page(params[:page]).per(10)
     end
@@ -63,16 +64,36 @@ class WorkspacesController < ApplicationController
   end
 
   def tag_filter
-    @tag = Tag.find(params[:tag_id])
-    @workspaces = @tag.workspaces.page(params[:page]).per(10)
-  end
-
+    @q = Workspace.ransack(params[:q])
+    if params[:workspace] && params[:workspace][:tag_ids].present?
+      tag_ids = params[:workspace][:tag_ids]
+      @workspaces = @q.result
+                      .joins(:tags)
+                      .where(tags: { id: tag_ids })
+                      .group('workspaces.id')
+                      .having("COUNT(tags.id) = #{tag_ids.size}")
+                      .page(params[:page])
+                      .per(10)
+    else
+      @workspaces = @q.result
+    end
+    @workspaces_count = @workspaces.to_a.count
+    end
+  
    def search
     @q = Workspace.where("title like ?", "%#{params[:q]}%")
     respond_to do |format|
       format.js
     end
   end
+
+  def search_result
+    @q = Workspace.ransack(params[:q])
+    @workspaces = @q.result.page(params[:page]).per(10)
+    @workspaces_count = @workspaces.count
+    @search_keyword = params[:q][:title_cont] if params[:q] && params[:q][:title_cont].present?
+  end
+
 
   private
 

@@ -1,11 +1,29 @@
-<!-- tag_filter.html.erb -->
+<nav class="m-8">
+  <ul class="list-none p-0">
+    <li class="mb-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+    <li class="mb-4">
+      <i class="fas fa-arrow-left text-black mr-2"></i>
+      <%= link_to '一覧に戻る', list_workspaces_path, class: "text-black hover:text-indigo-700" %>
+    </li>
+  </ul>
+</nav>
 
-<div class="flex flex-wrap justify-center my-4">
-  <% @filtered_items.each do |item| %>
-    <div class="m-2">
-      <!-- アイテムの表示 -->
-      <p><%= item.name %></p>
-      <!-- 他の属性の表示 -->
-    </div>
-  <% end %>
+<div class="container mx-auto text-center -mt-5"> 
+  <h2 class="text-2xl font-bold mb-4">タグ検索結果</h2>
+  <p class="mb-2">件数: <%= @workspaces_count %>件</p>
+  <div class="flex flex-wrap justify-center mb-4">
+    <p class="text-lg font-bold mb-2">検索タグ: </p>
+    <% params[:workspace][:tag_ids].each do |tag_id| %>
+      <% tag = Tag.find(tag_id) %>
+      <div class="mr-2 mb-2">
+        <span class="px-2 py-1 bg-sky-300 rounded-full text-sm font-medium text-gray-700"><%= tag.name %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="mb-4">
+    <%= render 'workspaces_index', workspaces: @workspaces %>
+  </div>
 </div>
