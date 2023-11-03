@@ -38,16 +38,17 @@ class WorkspacesController < ApplicationController
   end
 
   def list
-    if params[:latest]
-      @workspaces = Workspace.latest.page(params[:page]).per(10)
+    @q = Workspace.ransack(params[:q])
+    @workspaces = if params[:latest]
+      @q.result.latest.page(params[:page]).per(10)
     elsif params[:old]
-      @workspaces = Workspace.old.page(params[:page]).per(10)
+      @q.result.old.page(params[:page]).per(10)
     elsif params[:highest_rated]
-      @workspaces = Workspace.highest_rated.page(params[:page]).per(10)
+      @q.result.highest_rated.page(params[:page]).per(10)
     elsif params[:workspace] && params[:workspace][:tag_ids].present?
-      @workspaces = Workspace.joins(:tags).where(tags: { id: params[:workspace][:tag_ids] }).distinct.page(params[:page]).per(10)
+      @q.result.joins(:tags).where(tags: { id: params[:workspace][:tag_ids] }).distinct.page(params[:page]).per(10)
     else
-      @workspaces = Workspace.latest.page(params[:page]).per(10)
+      @q.result.latest.page(params[:page]).per(10)
     end
   end
 
@@ -64,6 +65,13 @@ class WorkspacesController < ApplicationController
   def tag_filter
     @tag = Tag.find(params[:tag_id])
     @workspaces = @tag.workspaces.page(params[:page]).per(10)
+  end
+
+   def search
+    @q = Workspace.where("title like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

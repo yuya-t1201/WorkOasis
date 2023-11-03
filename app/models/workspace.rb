@@ -49,6 +49,10 @@ class Workspace < ApplicationRecord
   enum price: { '1~500': 0, '500~1000': 1, '1000~1500': 3, '1500~2000': 4, '2000~': 5
   }
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "address", "price", "recommendation", "spot_type"]
+  end
+
   def calculate_average_rating
     reviews.sum(:rating)
   end
