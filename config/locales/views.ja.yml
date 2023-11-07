@@ -74,6 +74,7 @@ ja:
       back_to_map: "マップに戻る"
       edit_button: "投稿を編集する"
       tags_label: "登録タグ"
+      back_to_list: '一覧に戻る'
     list:
       title: "ワークスペース一覧"
       sort_label: "並び替え"
@@ -83,6 +84,14 @@ ja:
     edit:
       update_button: "更新する"
       delete_button: "削除する"
+    search_result:
+      result_title: "検索結果"
+      result_count: "検索結果件数: %{count}件"
+      keyword: "検索キーワード: %{keyword}"
+    tag_filter:
+      result_title: "タグ検索結果"
+      result_count: "件数: %{count}件"
+      search_tags: "検索タグ: "
   reviews:
     new:
       title: "評価を投稿する"

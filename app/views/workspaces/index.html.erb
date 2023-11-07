@@ -3,6 +3,14 @@
     <p class="text-black font-semibold"><%= t('workspaces.index.click_to_explore') %></p>
   </div>
 
+
+  <div class="flex justify-center -mt-4 mb-4">
+    <button class="btn btn-xs btn-secondary" onclick="reloadPage()">
+        マップをリロードする
+    </button>
+  </div>
+
+
   <div class="mb-4 flex justify-center">
     <input id="searchBox" type="text" placeholder="都市名、住所、施設名、地名で検索" class="input input-bordered w-full input-sm max-w-xs mr-2" />
     <button class="btn btn-sm" onclick="searchLocationAndMove()"><%= t('workspaces.index.search') %></button>
@@ -12,6 +20,7 @@
     <div id="map" class="w-full h-screen mb-4"></div>
   </div>
 </div>
+
 
 <style>
   #map {
@@ -104,10 +113,9 @@
       }
     });
   }
-
-  document.addEventListener("DOMContentLoaded", function(event) {
-  initMap();
-});
+function reloadPage() {
+    location.reload();
+  }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
