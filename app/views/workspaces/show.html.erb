@@ -1,17 +1,17 @@
 <div class="container mx-auto px-4 h-full mb-0">
 
-<nav class="m-8">
-  <ul class="list-none p-0">
-    <li class="mb-4">
-      <i class="fas fa-arrow-left text-black mr-2"></i>
-      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
-    </li>
-    <li class="mb-4">
-      <i class="fas fa-arrow-left text-black mr-2"></i>
-      <%= link_to '一覧に戻る', list_workspaces_path, class: "text-black hover:text-indigo-700" %>
-    </li>
-  </ul>
-</nav>
+  <nav class="mt-8 -mb-4 -ml-9">
+    <ul class="list-none p-0">
+      <li class="mb-4">
+        <i class="fas fa-arrow-left text-black mr-2"></i>
+        <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+      </li>
+      <li class="mb-4">
+        <i class="fas fa-arrow-left text-black mr-2"></i>
+        <%= link_to t('workspaces.show.back_to_list'), list_workspaces_path, class: "text-black hover:text-indigo-700" %>
+      </li>
+    </ul>
+  </nav>
 
 
   <div class="flex items-center justify-center mr-16 ml-12 mt-16 mb-8">
@@ -65,7 +65,7 @@
 
 <script>
   function initMap() {
-    const mapElement = document.getElementById('map');
+    const mapElement = document.getElementById('map-show');
     const workspaceLatLng = { lat: <%= @workspace.latitude %>, lng: <%= @workspace.longitude %> };
 
     const map = new google.maps.Map(mapElement, {
@@ -82,7 +82,7 @@
 
   $(document).ready(function() {
     $('#toggle-reviews').click(function() {
-      $('#reviews-container').toggle(); // 評価を表示/非表示を切り替える
+      $('#reviews-container').toggle(); 
     });
   });
 </script>

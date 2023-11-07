@@ -6,16 +6,16 @@
     </li>
     <li class="mb-4">
       <i class="fas fa-arrow-left text-black mr-2"></i>
-      <%= link_to '一覧に戻る', list_workspaces_path, class: "text-black hover:text-indigo-700" %>
+      <%= link_to t('workspaces.show.back_to_list'), list_workspaces_path, class: "text-black hover:text-indigo-700" %>
     </li>
   </ul>
 </nav>
 
 <div class="container mx-auto text-center -mt-5"> 
-  <h2 class="text-2xl font-bold mb-4">タグ検索結果</h2>
-  <p class="mb-2">件数: <%= @workspaces_count %>件</p>
+  <h2 class="text-2xl font-bold mb-4"><%= t('workspaces.tag_filter.result_title') %></h2>
+  <p class="mb-2"><%= t('workspaces.tag_filter.result_count', count: @workspaces_count) %></p>
   <div class="flex flex-wrap justify-center mb-4">
-    <p class="text-lg font-bold mb-2">検索タグ: </p>
+    <p class="text-lg font-bold mb-2"><%= t('workspaces.tag_filter.search_tags') %></p>
     <% params[:workspace][:tag_ids].each do |tag_id| %>
       <% tag = Tag.find(tag_id) %>
       <div class="mr-2 mb-2">
