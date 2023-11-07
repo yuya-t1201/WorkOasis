@@ -8,7 +8,7 @@
     <button class="btn btn-sm" onclick="searchLocationAndMove()"><%= t('workspaces.index.search') %></button>
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center" data-turbolinks="false">
     <div id="map" class="w-full h-screen mb-4"></div>
   </div>
 </div>
@@ -34,12 +34,12 @@
     const workspaces = <%= raw @workspaces.to_json %>;
 
     const spotTypeColors = {
-    'cafe': '#CD853F', // カフェ: 明るい茶色
-    'library': '#00FF00', // 図書館: 明るい緑色
-    'coworking_space': '#00FFFF', // コワーキングスペース: 青色
-    'school': '#FFFF00', // 学校: 明るい黄色
-    'others': '#A9A9A9' // その他: 明るい灰色
-  };
+      'cafe': '#CD853F', // カフェ: 明るい茶色
+      'library': '#00FF00', // 図書館: 明るい緑色
+      'coworking_space': '#00FFFF', // コワーキングスペース: 青色
+      'school': '#FFFF00', // 学校: 明るい黄色
+      'others': '#A9A9A9' // その他: 明るい灰色
+    };
 
     workspaces.forEach(workspace => {
       const spotTypeColor = spotTypeColors[workspace.spot_type];
@@ -75,7 +75,7 @@
           // 詳細ページへのリンクを作成
           const workspaceLink = `<a href="/workspaces/${workspace.id}">${workspace.title}</a>`;
           infowindow.setContent(
-              `<div style="color: #333; font-family: Arial, sans-serif; padding: 10px;">
+            `<div style="color: #333; font-family: Arial, sans-serif; padding: 10px;">
                 <h3 style="margin-bottom: 10px; font-size: 20px;">${workspace.title}</h3>
                 <p style="margin-bottom: 2px;"><strong>スポットタイプ:</strong> ${workspace.spot_type}</p>
                 <p style="margin-bottom: 5px;"><strong>住所:</strong> ${workspace.address}</p>
@@ -96,14 +96,18 @@
     let address = document.getElementById('searchBox').value;
     let geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': address }, function (results, status) {
-        if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            map.setZoom(12);
-        } else {
-            alert('地域が見つかりませんでした: ' + status);
-        }
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        map.setZoom(12);
+      } else {
+        alert('地域が見つかりませんでした: ' + status);
+      }
     });
   }
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+  initMap();
+});
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
