@@ -15,7 +15,6 @@ class WorkspacesController < ApplicationController
   def create
     @workspace = current_user.workspaces.build(workspace_params)
     if @workspace.save
-      ActionCable.server.broadcast('workspace_notifications_channel', { message: '新しいワークスペースが登録されました' })
       redirect_to workspace_path(@workspace), notice: 'ワークスペースが登録されました'
     else
       render :new
