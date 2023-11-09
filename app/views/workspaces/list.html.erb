@@ -13,7 +13,7 @@
   <div class="flex justify-center"> 
     <div class="relative flex rounded-md">
       <div data-controller="autocomplete" data-autocomplete-url-value="/workspaces/search" role="combobox">
-        <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, class: "w-[300px] py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400", placeholder: "キーワードを入力してください" %>
+        <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, class: "w-[300px] py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400", placeholder: "キーワードを入力してください", required: true %>
         <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
         <ul class="z-10 list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
         <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
@@ -46,7 +46,7 @@
         <div class="grid grid-cols-3 gap-4">
           <% Tag.all.each do |tag| %>
             <div class="text-center">
-              <%= check_box_tag 'workspace[tag_ids][]', tag.id, params.dig(:workspace, :tag_ids)&.include?(tag.id), id: "workspace_tag_#{tag.id}" %>
+              <%= check_box_tag 'workspace[tag_ids][]', tag.id, params.dig(:workspace, :tag_ids)&.include?(tag.id), id: "workspace_tag_#{tag.id}", required: true %>
               <%= label_tag "workspace_tag_#{tag.id}", tag.name %>
             </div>
           <% end %>
