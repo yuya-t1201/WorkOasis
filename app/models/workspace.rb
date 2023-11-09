@@ -3,7 +3,7 @@
 # Table name: workspaces
 #
 #  id              :bigint           not null, primary key
-#  address         :string(255)      not null
+#  address         :text             not null
 #  latitude        :float
 #  longitude       :float
 #  price           :integer          default("1~500")
@@ -17,6 +17,8 @@
 #
 # Indexes
 #
+#  index_workspaces_on_address  (address) UNIQUE
+#  index_workspaces_on_title    (title) UNIQUE
 #  index_workspaces_on_user_id  (user_id)
 #
 class Workspace < ApplicationRecord
@@ -32,7 +34,7 @@ class Workspace < ApplicationRecord
   validates :address, presence: true, uniqueness: true
   validates :recommendation, presence: true
   validates :spot_type, presence: true
-  
+
   mount_uploader :workspace_image, ImageUploader
 
   geocoded_by :address
@@ -52,15 +54,15 @@ class Workspace < ApplicationRecord
   def spot_type_color
     case spot_type
     when 'cafe'
-      '#f3b79b' 
+      '#f3b79b'
     when 'library'
-      '#a1f7b5' 
+      '#a1f7b5'
     when 'coworking_space'
-      '#a4f5f9' 
+      '#a4f5f9'
     when 'school'
-      '#f4f2a6' 
+      '#f4f2a6'
     else
-      '#d1d1d1' 
+      '#d1d1d1'
     end
   end
 
@@ -75,6 +77,5 @@ class Workspace < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user_id)
   end
-
 end
 
