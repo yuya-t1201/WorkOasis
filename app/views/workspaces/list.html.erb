@@ -46,7 +46,7 @@
         <div class="grid grid-cols-3 gap-4">
           <% Tag.all.each do |tag| %>
             <div class="text-center">
-              <%= check_box_tag 'workspace[tag_ids][]', tag.id, params.dig(:workspace, :tag_ids)&.include?(tag.id), id: "workspace_tag_#{tag.id}", required: true %>
+              <%= check_box_tag 'workspace[tag_ids][]', tag.id, params.dig(:workspace, :tag_ids)&.include?(tag.id), id: "workspace_tag_#{tag.id}" %>
               <%= label_tag "workspace_tag_#{tag.id}", tag.name %>
             </div>
           <% end %>
@@ -78,6 +78,4 @@
       searchButtonSection.style.display = "none";
     }
   }
-  
-
 </script>

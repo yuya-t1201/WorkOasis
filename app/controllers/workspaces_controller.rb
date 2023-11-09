@@ -64,6 +64,11 @@ class WorkspacesController < ApplicationController
   end
 
   def tag_filter
+    if params[:workspace].blank? || params[:workspace][:tag_ids].blank?
+      flash[:alert] = "少なくとも1つのタグを選択してください。"
+      redirect_to list_workspaces_path and return
+    end
+
     @q = Workspace.ransack(params[:q])
     if params[:workspace] && params[:workspace][:tag_ids].present?
       tag_ids = params[:workspace][:tag_ids]
