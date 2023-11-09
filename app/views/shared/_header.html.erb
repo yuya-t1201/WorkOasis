@@ -13,6 +13,7 @@
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <% if logged_in? %>
+        <li><%= link_to t('header.index'), workspaces_path %></li>
         <li><%= link_to t('header.post'), new_workspace_path %></li>
         <li><%= link_to t('header.list'), list_workspaces_path %></li>
         <li>
