@@ -73,7 +73,7 @@ ja:
       no_reviews: "評価はまだありません"
       back_to_map: "マップに戻る"
       edit_button: "投稿を編集する"
-      tags_label: "登録タグ"
+      tags_label: "特徴"
       back_to_list: '一覧に戻る'
     list:
       title: "ワークスペース一覧"
