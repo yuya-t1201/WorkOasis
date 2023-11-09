@@ -16,28 +16,29 @@
     <button class="btn btn-sm" onclick="searchLocationAndMove()"><%= t('workspaces.index.search') %></button>
   </div>
 
- <div class="flex justify-center mb-4">
+  <div class="flex justify-center mb-4">
     <div class="mr-4 flex items-center">
-        <div class="w-4 h-4 mr-2" style="background-color: #CD853F;"></div>
+        <div class="w-4 h-4 mr-2" style="background-color: #f3b79b;"></div>
         <p class="text-black font-semibold">カフェ</p>
     </div>
     <div class="mr-4 flex items-center">
-        <div class="w-4 h-4 mr-2" style="background-color: #00FF00;"></div>
+        <div class="w-4 h-4 mr-2" style="background-color: #a1f7b5;"></div>
         <p class="text-black font-semibold">図書館</p>
     </div>
     <div class="mr-4 flex items-center">
-        <div class="w-4 h-4 mr-2" style="background-color: #00FFFF;"></div>
+        <div class="w-4 h-4 mr-2" style="background-color: #a4f5f9;"></div>
         <p class="text-black font-semibold">コワーキングスペース</p>
     </div>
     <div class="mr-4 flex items-center">
-        <div class="w-4 h-4 mr-2" style="background-color: #FFFF00;"></div>
+        <div class="w-4 h-4 mr-2" style="background-color: #f4f2a6;"></div>
         <p class="text-black font-semibold">学校</p>
     </div>
     <div class="mr-4 flex items-center">
-        <div class="w-4 h-4 mr-2" style="background-color: #A9A9A9;"></div>
+        <div class="w-4 h-4 mr-2" style="background-color: #d1d1d1;"></div>
         <p class="text-black font-semibold">その他</p>
     </div>
-</div>
+  </div>
+
 
 
   <div class="flex justify-center" data-turbolinks="false">
@@ -67,11 +68,11 @@
     const workspaces = <%= raw @workspaces.to_json %>;
 
     const spotTypeColors = {
-      'cafe': '#CD853F', // カフェ: 明るい茶色
-      'library': '#00FF00', // 図書館: 明るい緑色
-      'coworking_space': '#00FFFF', // コワーキングスペース: 青色
-      'school': '#FFFF00', // 学校: 明るい黄色
-      'others': '#A9A9A9' // その他: 明るい灰色
+      'cafe': '#f3b79b', // カフェ: パステルオレンジ
+      'library': '#a1f7b5', // 図書館: パステルグリーン
+      'coworking_space': '#a4f5f9', // コワーキングスペース: パステルブルー
+      'school': '#f4f2a6', // 学校: パステルイエロー
+      'others': '#d1d1d1' // その他: パステルグレー
     };
 
     workspaces.forEach(workspace => {
