@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_054324) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_110430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_054324) do
 
   create_table "workspaces", force: :cascade do |t|
     t.string "title", limit: 100, null: false
-    t.string "address", limit: 255, null: false
+    t.text "address", null: false
     t.integer "price", default: 0
     t.text "recommendation"
     t.string "workspace_image"
@@ -87,6 +87,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_054324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "spot_type", null: false
+    t.index ["address"], name: "index_workspaces_on_address", unique: true
+    t.index ["title"], name: "index_workspaces_on_title", unique: true
     t.index ["user_id"], name: "index_workspaces_on_user_id"
   end
 

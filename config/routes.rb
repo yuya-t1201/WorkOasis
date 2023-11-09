@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   get 'terms_of_use', to: 'static_page#terms_of_use'
   get 'privacy_policy', to: 'static_page#privacy_policy'
 
-
   # Defines the root path route ("/")
   root 'pages#lp'
   resource :profile, only: %i[show edit update]

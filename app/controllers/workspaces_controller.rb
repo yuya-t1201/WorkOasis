@@ -5,13 +5,13 @@ class WorkspacesController < ApplicationController
     @workspaces = Workspace.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @workspace = Workspace.new
   end
 
+  def edit; end
   def create
     @workspace = current_user.workspaces.build(workspace_params)
     if @workspace.save
@@ -21,8 +21,6 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def update
     if @workspace.update(workspace_params)
@@ -40,17 +38,17 @@ class WorkspacesController < ApplicationController
   def list
     @q = Workspace.ransack(params[:q])
     @workspaces = if params[:latest]
-      @q.result.latest.page(params[:page]).per(10)
-    elsif params[:old]
-      @q.result.old.page(params[:page]).per(10)
-    elsif params[:highest_rated]
-      @q.result.highest_rated.page(params[:page]).per(10)
-    elsif params[:workspace] && params[:workspace][:tag_ids].present?
-      tag_ids = params[:workspace][:tag_ids]
-      @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}").page(params[:page]).per(10)
-    else
-      @q.result.latest.page(params[:page]).per(10)
-    end
+                    @q.result.latest.page(params[:page]).per(10)
+                  elsif params[:old]
+                    @q.result.old.page(params[:page]).per(10)
+                  elsif params[:highest_rated]
+                    @q.result.highest_rated.page(params[:page]).per(10)
+                  elsif params[:workspace] && params[:workspace][:tag_ids].present?
+                    tag_ids = params[:workspace][:tag_ids]
+                    @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}").page(params[:page]).per(10)
+                  else
+                    @q.result.page(params[:page]).per(10)
+                  end
   end
 
   def create_favorite
@@ -73,19 +71,19 @@ class WorkspacesController < ApplicationController
     if params[:workspace] && params[:workspace][:tag_ids].present?
       tag_ids = params[:workspace][:tag_ids]
       @workspaces = @q.result
-                      .joins(:tags)
-                      .where(tags: { id: tag_ids })
-                      .group('workspaces.id')
-                      .having("COUNT(tags.id) = #{tag_ids.size}")
-                      .page(params[:page])
-                      .per(10)
+        .joins(:tags)
+        .where(tags: { id: tag_ids })
+        .group('workspaces.id')
+        .having("COUNT(tags.id) = #{tag_ids.size}")
+        .page(params[:page])
+        .per(10)
     else
       @workspaces = @q.result
     end
-    @workspaces_count = @workspaces.to_a.count
-    end
-  
-   def search
+    @workspaces_count = @workspaces.to_a.size
+  end
+
+  def search
     @q = Workspace.where("title like ?", "%#{params[:q]}%")
     respond_to do |format|
       format.js
