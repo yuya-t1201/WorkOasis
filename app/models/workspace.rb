@@ -32,7 +32,7 @@ class Workspace < ApplicationRecord
   validates :address, presence: true, uniqueness: true
   validates :recommendation, presence: true
   validates :spot_type, presence: true
-
+  
   mount_uploader :workspace_image, ImageUploader
 
   geocoded_by :address
@@ -75,5 +75,6 @@ class Workspace < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user_id)
   end
+
 end
 
