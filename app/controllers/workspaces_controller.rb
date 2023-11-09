@@ -51,16 +51,6 @@ class WorkspacesController < ApplicationController
                   end
   end
 
-  def create_favorite
-    current_user.likes.create(workspace: @workspace)
-    redirect_to @workspace, notice: 'ワークスペースをお気に入りに追加しました'
-  end
-
-  def destroy_favorite
-    current_user.likes.find_by(workspace: @workspace).destroy
-    redirect_to @workspace, notice: 'ワークスペースのお気に入りを解除しました'
-  end
-
   def tag_filter
     if params[:workspace].blank? || params[:workspace][:tag_ids].blank?
       flash[:alert] = "少なくとも1つのタグを選択してください。"

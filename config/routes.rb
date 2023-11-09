@@ -15,11 +15,7 @@ Rails.application.routes.draw do
       get 'search_result' 
     end
     
-    member do
-      post 'create_favorite'
-      delete 'destroy_favorite'
-    end
-
+    resources :favorites, only: [:create, :destroy]
     resources :reviews, only: [:new, :create, :edit, :update]
   end
 
