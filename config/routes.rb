@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   get 'static_page/terms_of_use'
   get 'static_page/privacy_policy'
   resources :users, only: %i[new create]
