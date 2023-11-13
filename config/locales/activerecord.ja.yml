@@ -25,6 +25,7 @@ ja:
         salt: 'ソルト'
         name: '名前'
         avatar: 'アバター'
+        address: '住所'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
       workspace:
