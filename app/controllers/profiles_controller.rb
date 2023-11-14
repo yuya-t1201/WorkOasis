@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   def show
     @likes_workspaces = current_user.likes.map(&:workspace)
     @reviewed_workspaces = current_user.reviews.map(&:workspace)
+    @nearby_workspaces = current_user.workspaces_within_10km
   end
 
   def edit; end
