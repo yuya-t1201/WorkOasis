@@ -55,4 +55,12 @@ class User < ApplicationRecord
   def likes?(workspace)
     likes.exists?(workspace: workspace)
   end
+
+  def workspaces_within_10km
+    if latitude.present? && longitude.present?
+      Workspace.near([latitude, longitude], 10)
+    else
+      []
+    end
+  end
 end

@@ -8,34 +8,43 @@
   <button id="toggle-posted-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_posted_workspaces_button') %></button>
   <button id="toggle-liked-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_liked_workspaces_button') %></button>
   <button id="toggle-reviewed-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_reviewed_workspaces_button') %></button>
+  <button id="toggle-nearby-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_nearby_workspaces_button') %></button>
 </div>
 
 <%= render 'posted_workspaces' %>
 <%= render 'liked_workspaces' %>
 <%= render 'reviewed_workspaces' %>
+<%= render 'nearby_workspaces' %>
 
 <script>
     $(document).ready(function() {
-    $('#toggle-posted-workspaces').click(function() {
-      // 他のワークスペースコンテナを非表示にする
-      $('.workspace-container').not('.posted').hide();
-      // 投稿したワークスペースを表示する
-      $('.workspace-container.posted').toggle();
-    });
+      $('#toggle-posted-workspaces').click(function() {
+        // 他のワークスペースコンテナを非表示にする
+        $('.workspace-container').not('.posted').hide();
+        // 投稿したワークスペースを表示する
+        $('.workspace-container.posted').toggle();
+      });
 
-    $('#toggle-liked-workspaces').click(function() {
-      // 他のワークスペースコンテナを非表示にする
-      $('.workspace-container').not('.liked').hide();
-      // お気に入りしたワークスペースを表示する
-      $('.workspace-container.liked').toggle();
-    });
+      $('#toggle-liked-workspaces').click(function() {
+        // 他のワークスペースコンテナを非表示にする
+        $('.workspace-container').not('.liked').hide();
+        // お気に入りしたワークスペースを表示する
+        $('.workspace-container.liked').toggle();
+      });
 
-    $('#toggle-reviewed-workspaces').click(function() {
-      // 他のワークスペースコンテナを非表示にする
-      $('.workspace-container').not('.reviewed').hide();
-      // 評価したワークスペースを表示する
-      $('.workspace-container.reviewed').toggle();
+      $('#toggle-reviewed-workspaces').click(function() {
+        // 他のワークスペースコンテナを非表示にする
+        $('.workspace-container').not('.reviewed').hide();
+        // 評価したワークスペースを表示する
+        $('.workspace-container.reviewed').toggle();
+      });
+
+      $('#toggle-nearby-workspaces').click(function() {
+        // 他のワークスペースコンテナを非表示にする
+        $('.workspace-container').not('.nearby').hide();
+        // 10km以内のワークスペースを表示する
+        $('.workspace-container.nearby').toggle();
+      });
     });
-  });
 </script>
 

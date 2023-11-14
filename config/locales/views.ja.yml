@@ -108,6 +108,7 @@ ja:
       toggle_posted_workspaces_button: "投稿したワークスペースを表示"
       toggle_liked_workspaces_button: "お気に入りしたワークスペースを表示"
       toggle_reviewed_workspaces_button: "評価したワークスペースを表示"
+      toggle_nearby_workspaces_button: "近くのワークスペース"
     edit:
       error_explanation_title: "%{count}つのエラーがあります："
       name_label: "名前"
