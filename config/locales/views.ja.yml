@@ -86,6 +86,11 @@ ja:
       latest_option: "新着順"
       old_option: "古い順"
       highest_rated_option: "評価順"
+      comfort_order_option: "快適度順"
+      convenience_order_option: "利便性順"
+      coziness_order_option: "居心地の良さ順"
+      ease_of_work_order_option: "作業のしやすさ順"
+      environmental_noise_order_option: "環境の騒音順"
     edit:
       update_button: "更新する"
       delete_button: "削除する"
