@@ -44,6 +44,16 @@ class WorkspacesController < ApplicationController
                     @q.result.old.page(params[:page]).per(10)
                   elsif params[:highest_rated]
                     @q.result.highest_rated.page(params[:page]).per(10)
+                  elsif params[:comfort_order]
+                    @q.result.order_by_comfort.page(params[:page]).per(10)
+                  elsif params[:convenience_order]
+                    @q.result.order_by_convenience.page(params[:page]).per(10)
+                  elsif params[:coziness_order]
+                    @q.result.order_by_coziness.page(params[:page]).per(10)
+                  elsif params[:ease_of_work_order]
+                    @q.result.order_by_ease_of_work.page(params[:page]).per(10)
+                  elsif params[:environmental_noise_order]
+                    @q.result.order_by_environmental_noise.page(params[:page]).per(10)
                   elsif params[:workspace] && params[:workspace][:tag_ids].present?
                     tag_ids = params[:workspace][:tag_ids]
                     @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}").page(params[:page]).per(10)
@@ -51,6 +61,7 @@ class WorkspacesController < ApplicationController
                     @q.result.page(params[:page]).per(10)
                   end
   end
+
 
   def tag_filter
     if params[:workspace].blank? || params[:workspace][:tag_ids].blank?

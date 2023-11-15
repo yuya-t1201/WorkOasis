@@ -47,6 +47,31 @@ class Workspace < ApplicationRecord
     .group('workspaces.id')
     .order(Arel.sql('COALESCE(SUM(reviews.rating), 0) DESC'))
   }
+  scope :order_by_comfort, -> {
+    left_joins(:reviews)
+      .group('workspaces.id')
+      .order(Arel.sql('COALESCE(SUM(reviews.comfort), 0) DESC'))
+  }
+  scope :order_by_convenience, -> {
+    left_joins(:reviews)
+      .group('workspaces.id')
+      .order(Arel.sql('COALESCE(SUM(reviews.convenience), 0) DESC'))
+  }
+  scope :order_by_coziness, -> {
+    left_joins(:reviews)
+      .group('workspaces.id')
+      .order(Arel.sql('COALESCE(SUM(reviews.coziness), 0) DESC'))
+  }
+  scope :order_by_ease_of_work, -> {
+    left_joins(:reviews)
+      .group('workspaces.id')
+      .order(Arel.sql('COALESCE(SUM(reviews.ease_of_work), 0) DESC'))
+  }
+  scope :order_by_environmental_noise, -> {
+    left_joins(:reviews)
+      .group('workspaces.id')
+      .order(Arel.sql('COALESCE(SUM(reviews.environmental_noise), 0) DESC'))
+  }
 
   enum price: { '1~500': 0, '500~1000': 1, '1000~1500': 3, '1500~2000': 4, '2000~': 5
   }
@@ -77,5 +102,6 @@ class Workspace < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user_id)
   end
+
 end
 

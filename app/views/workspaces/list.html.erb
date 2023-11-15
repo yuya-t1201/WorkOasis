@@ -35,6 +35,11 @@
       <li><%= link_to t('workspaces.list.latest_option'), list_workspaces_path(latest: "true") %></li>
       <li><%= link_to t('workspaces.list.old_option'), list_workspaces_path(old: "true") %></li>
       <li><%= link_to t('workspaces.list.highest_rated_option'), list_workspaces_path(highest_rated: "true") %></li>
+      <li><%= link_to t('workspaces.list.comfort_order_option'), list_workspaces_path(comfort_order: "true") %></li>
+      <li><%= link_to t('workspaces.list.convenience_order_option'), list_workspaces_path(convenience_order: "true") %></li>
+      <li><%= link_to t('workspaces.list.coziness_order_option'), list_workspaces_path(coziness_order: "true") %></li>
+      <li><%= link_to t('workspaces.list.ease_of_work_order_option'), list_workspaces_path(ease_of_work_order: "true") %></li>
+      <li><%= link_to t('workspaces.list.environmental_noise_order_option'), list_workspaces_path(environmental_noise_order: "true") %></li>
     </ul>
   </div>
 </div>
