@@ -1,5 +1,7 @@
 <% if current_user.present? %>
-      <% unless current_user.has_reviewed?(workspace) %>
-       <%= link_to t('workspaces.show.rate_workspace_button'), new_workspace_review_path(workspace), class: "btn btn-sm" %>
-      <% end %>
-    <% end %>
+  <% if current_user.has_reviewed?(workspace) %>
+    <%= link_to t('workspaces.show.edit_review_button'), edit_workspace_review_path(@workspace, current_user.review_for(workspace)), class: 'btn btn-sm' %>
+  <% else %>
+    <%= link_to t('workspaces.show.rate_workspace_button'), new_workspace_review_path(workspace), class: "btn btn-sm" %>
+  <% end %>
+<% end %>

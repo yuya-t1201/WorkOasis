@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:comment, :rating).merge(
+    params.require(:review).permit(:comment, :rating, :comfort, :convenience, :environmental_noise, :ease_of_work, :coziness).merge(
       user_id: current_user.id, workspace_id: params[:workspace_id]
     )
   end

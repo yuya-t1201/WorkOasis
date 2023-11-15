@@ -11,7 +11,8 @@
             <% end %>
           </div>
         </div>
-        <div class="chat-bubble">
+
+        <div class="chat-bubble bg-pink relative">
           <div class="rating-header">
             <span class="user-name"><%= review.user.name %></span> 
             <div class="rating-stars">
@@ -20,14 +21,29 @@
               <% end %>
             </div>
           </div>
-          <div class="comment">
-            <%= review.comment %> 
+
+          <div class="rating-values mt-2"> <!-- 適切な感覚を調整 -->
+        <div class="flex space-x-4 items-center"> <!-- 各項目の感覚を調整 -->
+          <div class="text-sm flex items-center"> <!-- 文字を小さく調整 -->
+            快適さ: <%= "#{review.comfort}点" %>
+          </div>
+          <div class="text-sm flex items-center">
+            利便性: <%= "#{review.convenience}点" %>
+          </div>
+          <div class="text-sm flex items-center">
+            居心地の良さ: <%= "#{review.coziness}点" %>
+          </div>
+          <div class="text-sm flex items-center">
+            作業のしやすさ: <%= "#{review.ease_of_work}点" %>
+          </div>
+          <div class="text-sm flex items-center">
+            環境音: <%= "#{review.environmental_noise}点" %>
           </div>
         </div>
-        <div class="ml-4 mt-4"> 
-          <% if current_user == review.user %>
-            <%= link_to t('workspaces.show.edit_review_button'), edit_workspace_review_path(@workspace, review), class: "btn btn-outline " %>
-          <% end %>
+      </div>
+          <div class="comment mt-4 border-dashed border-t-2 pt-2">
+            <%= review.comment %> 
+          </div>
         </div>
       </div>
     <% end %>

@@ -69,12 +69,17 @@ ja:
       price_label: "金額帯"
       recommendation_label: "おすすめポイント"
       view_reviews_button: "ユーザーの評価を見る"
-      edit_review_button: "編集"
+      edit_review_button: "評価を編集する"
       no_reviews: "評価はまだありません"
       back_to_map: "マップに戻る"
       edit_button: "投稿を編集する"
       tags_label: "特徴"
       back_to_list: '一覧に戻る'
+      comfort: '快適さ'
+      convenience: '利便性'
+      coziness: '居心地の良さ'
+      ease_of_work: '作業のしやすさ'
+      environmental_noise: '環境音'
     list:
       title: "ワークスペース一覧"
       sort_label: "並び替え"
@@ -98,6 +103,11 @@ ja:
       rating_label: "評価"
       comment_label: "コメント"
       submit_button: "投稿"
+      comfort_label: '快適さ'
+      convenience_label: '利便性'
+      environmental_noise_label: '環境音'
+      ease_of_work_label: '作業のしやすさ'
+      coziness_label: '居心地'
     edit:
       title: "評価を編集する"
       comment_label: "コメント"

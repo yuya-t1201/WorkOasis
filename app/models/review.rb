@@ -2,14 +2,19 @@
 #
 # Table name: reviews
 #
-#  id           :bigint           not null, primary key
-#  comment      :text
-#  integer      :integer          default(0), not null
-#  rating       :integer          default(0), not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  user_id      :bigint           not null
-#  workspace_id :bigint           not null
+#  id                  :bigint           not null, primary key
+#  comfort             :integer          default(0), not null
+#  comment             :text
+#  convenience         :integer          default(0), not null
+#  coziness            :integer          default(0), not null
+#  ease_of_work        :integer          default(0), not null
+#  environmental_noise :integer          default(0), not null
+#  integer             :integer          default(0), not null
+#  rating              :integer          default(0), not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_id             :bigint           not null
+#  workspace_id        :bigint           not null
 #
 # Indexes
 #
