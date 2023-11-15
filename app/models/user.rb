@@ -44,6 +44,10 @@ class User < ApplicationRecord
     self.reviews.exists?(workspace_id: workspace.id)
   end
 
+  def review_for(workspace)
+    reviews.find_by(workspace_id: workspace.id)
+  end
+
   def like(workspace)
     likes_workspaces << workspace
   end
@@ -58,7 +62,7 @@ class User < ApplicationRecord
 
   def workspaces_within_10km
     if latitude.present? && longitude.present?
-      Workspace.near([latitude, longitude], 10)
+      Workspace.near([latitude, longitude], 5)
     else
       []
     end

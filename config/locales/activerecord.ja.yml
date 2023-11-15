@@ -15,6 +15,11 @@ ja:
         user_id: 'ユーザーID'
         workspace_id: 'ワークスペースID'
       review:
+        comfort: '快適さ'
+        convenience: '利便性'
+        coziness: '居心地の良さ'
+        ease_of_work: '作業のしやすさ'
+        environmental_noise: '環境音'
         comment: 'コメント'
         user_id: 'ユーザーID'
         workspace_id: 'ワークスペースID'

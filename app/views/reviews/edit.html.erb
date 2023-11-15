@@ -11,6 +11,41 @@
     <%= form.hidden_field :rating, id: 'review_rating' %>
   </div>
 
+   <div class="mb-4 text-center">
+    <div class="text-center mb-2">
+      <%= form.label :comfort, t('reviews.new.comfort_label') %>
+    </div>
+    <%= form.range_field :comfort, min: 0, max: 100, value: @review.comfort, class: 'range w-64 range-success' %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <div class="text-center mb-2">
+      <%= form.label :convenience, t('reviews.new.convenience_label') %>
+    </div>
+    <%= form.range_field :convenience, min: 0, max: 100, value: @review.convenience, class: 'range w-64 range-success' %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <div class="text-center mb-2">
+      <%= form.label :environmental_noise, t('reviews.new.environmental_noise_label') %>
+    </div>
+    <%= form.range_field :environmental_noise, min: 0, max: 100, value: @review.environmental_noise, class: 'range w-64 range-success' %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <div class="text-center mb-2">
+      <%= form.label :ease_of_work, t('reviews.new.ease_of_work_label') %>
+    </div>
+    <%= form.range_field :ease_of_work, min: 0, max: 100, value: @review.ease_of_work, class: 'range w-64 range-success' %>
+  </div>
+
+  <div class="mb-4 text-center">
+    <div class="text-center mb-2">
+      <%= form.label :coziness, t('reviews.new.coziness_label') %>
+    </div>
+    <%= form.range_field :coziness, min: 0, max: 100, value: @review.coziness, class: 'range w-64 range-success' %>
+  </div>
+
   <div class="mb-4 text-center">
     <div class="text-center mb-2">
       <%= form.label :comment, t('reviews.edit.comment_label') %>
