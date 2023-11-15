@@ -1,0 +1,58 @@
+<div class="mb-4 text-center">
+  <div class="border-l-4 border-indigo-500 pl-4 mx-auto w-max">
+    <h2 class="text-3xl font-main mt-32 mb-20"><%= @workspace.title %></h2>
+  </div>
+  <div class="flex items-center justify-center space-x-2 mb-10">
+    <% (1..5).each do |rating| %>
+      <i class="star fa-solid fa-star" data-rating="<%= rating %>"
+        style="color: <%= @review.rating >= rating ? '#fbe704' : '#ccc' %>; font-size: 5rem;">
+      </i>
+    <% end %>
+  </div>
+  <%= form.hidden_field :rating, id: 'review_rating' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :comfort, t('reviews.new.comfort_label') %>
+  </div>
+  <%= form.range_field :comfort, min: 0, max: 100, value: @review.comfort, class: 'range w-64 range-success' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :convenience, t('reviews.new.convenience_label') %>
+  </div>
+  <%= form.range_field :convenience, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :environmental_noise, t('reviews.new.environmental_noise_label') %>
+  </div>
+  <%= form.range_field :environmental_noise, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :ease_of_work, t('reviews.new.ease_of_work_label') %>
+  </div>
+  <%= form.range_field :ease_of_work, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :coziness, t('reviews.new.coziness_label') %>
+  </div>
+  <%= form.range_field :coziness, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+</div>
+
+<div class="mb-4 text-center">
+  <div class="text-center mb-2">
+    <%= form.label :comment, t('reviews.edit.comment_label') %>
+  </div>
+  <%= form.text_area :comment,
+                    class: 'block w-64 p-2 rounded-md border-gray-300 shadow-sm
+                            focus:border-indigo-300 focus:ring focus:ring-indigo-200
+                            focus:ring-opacity-50 mx-auto' %>
+</div>

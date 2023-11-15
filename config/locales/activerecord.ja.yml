@@ -28,7 +28,7 @@ ja:
         email: 'メールアドレス'
         crypted_password: '暗号化パスワード'
         salt: 'ソルト'
-        name: '名前'
+        name: 'ニックネーム'
         avatar: 'アバター'
         address: '住所'
         password: 'パスワード'
