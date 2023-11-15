@@ -12,7 +12,7 @@ class WorkspacesController < ApplicationController
   end
 
   def edit; end
-  
+
   def create
     @workspace = current_user.workspaces.build(workspace_params)
     if @workspace.save
@@ -109,12 +109,11 @@ class WorkspacesController < ApplicationController
     params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude, :spot_type, tag_ids: [])
   end
 
-  private
 
   def notify_nearby_users(workspace)
     nearby_users = User.near([workspace.latitude, workspace.longitude], 10) # 10km以内のユーザーを取得
 
-    nearby_users.each do |user|
+    nearby_users.each do |_user|
       ActionCable.server.broadcast(
         "workspace_notifications_channel",
         { message: '近くに新しいワークスペースが登録されました' }
