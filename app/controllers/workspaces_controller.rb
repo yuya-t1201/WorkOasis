@@ -109,15 +109,25 @@ class WorkspacesController < ApplicationController
     params.require(:workspace).permit(:title, :address, :price, :recommendation, :workspace_image, :latitude, :longitude, :spot_type, tag_ids: [])
   end
 
+  # Geocoder::Calculationsを使用して地理空間計算を行う
 
   def notify_nearby_users(workspace)
-    nearby_users = User.near([workspace.latitude, workspace.longitude], 5, units: :km) # 10km以内のユーザーを取得
+    center_point = [workspace.latitude, workspace.longitude]
+    nearby_users = User.all # すべてのユーザーを取得（実際のデータベースクエリを適用してください）
 
     nearby_users.each do |user|
-      ActionCable.server.broadcast(
-        "workspace_notifications_channel",
-        { message: '近くに新しいワークスペースが登録されました', user_id: user.id }
-      )
+      user_point = [user.latitude, user.longitude]
+
+      # find the distance between the workspace and the user
+      distance_in_km = Geocoder::Calculations.distance_between(center_point, user_point, units: :km)
+
+      # ここでdistance_in_kmを使用して必要な処理を行う
+      if distance_in_km <= 5
+        ActionCable.server.broadcast(
+          "workspace_notifications_channel",
+          { message: '近くに新しいワークスペースが登録されました', user_id: user.id }
+        )
+      end
     end
   end
 
