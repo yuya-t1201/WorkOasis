@@ -113,10 +113,10 @@ class WorkspacesController < ApplicationController
   def notify_nearby_users(workspace)
     nearby_users = User.near([workspace.latitude, workspace.longitude], 5) # 10km以内のユーザーを取得
 
-    nearby_users.each do |_user|
+    nearby_users.each do |user|
       ActionCable.server.broadcast(
         "workspace_notifications_channel",
-        { message: '近くに新しいワークスペースが登録されました' }
+        { message: '近くに新しいワークスペースが登録されました', user_id: user.id }
       )
     end
   end
