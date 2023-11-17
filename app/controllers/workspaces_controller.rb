@@ -1,5 +1,6 @@
 class WorkspacesController < ApplicationController
   before_action :set_workspace, only: [:show, :edit, :update, :destroy, :create_favorite, :destroy_favorite]
+  before_action :set_q, only: [:list, :search_result]
 
   def index
     @workspaces = Workspace.all
@@ -37,31 +38,8 @@ class WorkspacesController < ApplicationController
   end
 
   def list
-    @q = Workspace.ransack(params[:q])
-    @workspaces = if params[:latest]
-                    @q.result.latest.page(params[:page]).per(10)
-                  elsif params[:old]
-                    @q.result.old.page(params[:page]).per(10)
-                  elsif params[:highest_rated]
-                    @q.result.highest_rated.page(params[:page]).per(10)
-                  elsif params[:comfort_order]
-                    @q.result.order_by_comfort.page(params[:page]).per(10)
-                  elsif params[:convenience_order]
-                    @q.result.order_by_convenience.page(params[:page]).per(10)
-                  elsif params[:coziness_order]
-                    @q.result.order_by_coziness.page(params[:page]).per(10)
-                  elsif params[:ease_of_work_order]
-                    @q.result.order_by_ease_of_work.page(params[:page]).per(10)
-                  elsif params[:environmental_noise_order]
-                    @q.result.order_by_environmental_noise.page(params[:page]).per(10)
-                  elsif params[:workspace] && params[:workspace][:tag_ids].present?
-                    tag_ids = params[:workspace][:tag_ids]
-                    @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}").page(params[:page]).per(10)
-                  else
-                    @q.result.page(params[:page]).per(10)
-                  end
+    @workspaces = apply_filters.page(params[:page]).per(10)
   end
-
 
   def tag_filter
     if params[:workspace].blank? || params[:workspace][:tag_ids].blank?
@@ -93,7 +71,6 @@ class WorkspacesController < ApplicationController
   end
 
   def search_result
-    @q = Workspace.ransack(params[:q])
     @workspaces = @q.result.page(params[:page]).per(10)
     @workspaces_count = @workspaces.count
     @search_keyword = params[:q][:title_cont] if params[:q] && params[:q][:title_cont].present?
@@ -103,6 +80,10 @@ class WorkspacesController < ApplicationController
 
   def set_workspace
     @workspace = Workspace.find(params[:id])
+  end
+
+  def set_q
+    @q = Workspace.ransack(params[:q])
   end
 
   def workspace_params
@@ -130,6 +111,35 @@ class WorkspacesController < ApplicationController
          Rails.logger.info("ユーザーID #{user.id} に通知を送信しました。距離: #{distance_in_km} km")
       end
     end
+  end
+
+  def apply_filters
+    if params[:latest]
+      @q.result.latest
+    elsif params[:old]
+      @q.result.old
+    elsif params[:highest_rated]
+      @q.result.highest_rated
+    elsif params[:comfort_order]
+      @q.result.order_by_comfort
+    elsif params[:convenience_order]
+      @q.result.order_by_convenience
+    elsif params[:coziness_order]
+      @q.result.order_by_coziness
+    elsif params[:ease_of_work_order]
+      @q.result.order_by_ease_of_work
+    elsif params[:environmental_noise_order]
+      @q.result.order_by_environmental_noise
+    elsif params[:workspace] && params[:workspace][:tag_ids].present?
+      apply_tag_filters
+    else
+      @q.result
+    end
+  end
+
+  def apply_tag_filters
+    tag_ids = params[:workspace][:tag_ids]
+    @q.result.joins(:tags).where(tags: { id: tag_ids }).group('workspaces.id').having("COUNT(tags.id) = #{tag_ids.size}")
   end
 
 end
