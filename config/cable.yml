@@ -5,7 +5,6 @@ test:
   adapter: test
 
 production:
-  # adapter: redis
-  # url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  # channel_prefix: WorkOasis_production
-  adapter: async
+  dapter: redis
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: WorkOasis_production
