@@ -332,6 +332,16 @@ GEM
       activesupport (>= 6.1.5)
       i18n
     rbs (2.8.4)
+    redis (4.8.1)
+    redis-actionpack (5.3.0)
+      actionpack (>= 5, < 8)
+      redis-rack (>= 2.1.0, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-rack (2.1.4)
+      rack (>= 2.0.8, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.10.0)
+      redis (>= 4, < 6)
     regexp_parser (2.8.1)
     reline (0.3.5)
       io-console (~> 0.5)
@@ -480,6 +490,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.5)
   ransack
+  redis (~> 4.8.1, < 5)
+  redis-actionpack
   rspec-rails
   rubocop
   rubocop-performance

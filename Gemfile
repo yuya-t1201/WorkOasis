@@ -62,6 +62,8 @@ gem 'fog-aws'
 gem "aws-sdk-s3", require: false
 gem 'kaminari'
 gem 'ransack'
+gem 'redis' , "~> 4.8.1", "< 5"
+gem 'redis-actionpack'
 
 group :development do
   gem "web-console"
