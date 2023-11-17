@@ -16,35 +16,35 @@
   <div class="text-center mb-2">
     <%= form.label :comfort, t('reviews.new.comfort_label') %>
   </div>
-  <%= form.range_field :comfort, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+  <%= form.range_field :comfort, min: 0, max: 100, class: 'range w-64 range-success', value: @review.comfort || 40 %>
 </div>
 
 <div class="mb-4 text-center">
   <div class="text-center mb-2">
     <%= form.label :convenience, t('reviews.new.convenience_label') %>
   </div>
-  <%= form.range_field :convenience, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+  <%= form.range_field :convenience, min: 0, max: 100, class: 'range w-64 range-success', value: @review.convenience || 40 %>
 </div>
 
 <div class="mb-4 text-center">
   <div class="text-center mb-2">
     <%= form.label :environmental_noise, t('reviews.new.environmental_noise_label') %>
   </div>
-  <%= form.range_field :environmental_noise, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+  <%= form.range_field :environmental_noise, min: 0, max: 100, class: 'range w-64 range-success', value: @review.environmental_noise || 40 %>
 </div>
 
 <div class="mb-4 text-center">
   <div class="text-center mb-2">
     <%= form.label :ease_of_work, t('reviews.new.ease_of_work_label') %>
   </div>
-  <%= form.range_field :ease_of_work, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+  <%= form.range_field :ease_of_work, min: 0, max: 100, class: 'range w-64 range-success', value: @review.ease_of_work || 40 %>
 </div>
 
 <div class="mb-4 text-center">
   <div class="text-center mb-2">
     <%= form.label :coziness, t('reviews.new.coziness_label') %>
   </div>
-  <%= form.range_field :coziness, min: 0, max: 100, value: 40, class: 'range w-64 range-success' %>
+  <%= form.range_field :coziness, min: 0, max: 100, class: 'range w-64 range-success', value: @review.coziness || 40 %>
 </div>
 
 <div class="mb-4 text-center">
