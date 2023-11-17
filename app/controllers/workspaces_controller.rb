@@ -127,6 +127,7 @@ class WorkspacesController < ApplicationController
           "workspace_notifications_channel",
           { message: '近くに新しいワークスペースが登録されました', user_id: user.id }
         )
+         Rails.logger.info("ユーザーID #{user.id} に通知を送信しました。距離: #{distance_in_km} km")
       end
     end
   end
