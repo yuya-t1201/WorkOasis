@@ -2,7 +2,7 @@
   <ul class="list-none p-0">
     <li class="mb-4">
       <i class="fas fa-arrow-left text-black mr-2"></i>
-      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700" %>
+      <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700", data: {turbo: false}  %>
     </li>
   </ul>
 </nav>
@@ -69,7 +69,6 @@
     <%= render 'workspaces_index', workspaces: @workspaces %>
   </div>
 </div>
-
 
 <script>
   function toggleTagList() {

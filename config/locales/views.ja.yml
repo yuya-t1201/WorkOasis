@@ -113,6 +113,7 @@ ja:
       environmental_noise_label: '環境音'
       ease_of_work_label: '作業のしやすさ'
       coziness_label: '居心地'
+      back_to_show: '詳細ページに戻る'
     edit:
       title: "評価を編集する"
       comment_label: "コメント"
