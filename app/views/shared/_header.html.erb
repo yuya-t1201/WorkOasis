@@ -1,7 +1,7 @@
 <div class="navbar bg-secondary">
   <div class="flex-1">
     <% if logged_in? %>
-      <%= link_to workspaces_path, class: "btn btn-ghost normal-case text-xl" do %>
+      <%= link_to workspaces_path, class: "btn btn-ghost normal-case text-xl", data: {turbo: false} do %>
         <%= t('header.workoasis') %>
       <% end %>
     <% else %>
