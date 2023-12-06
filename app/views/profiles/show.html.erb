@@ -4,6 +4,8 @@
     <%= link_to t('profiles.show.edit_profile_button'), edit_profile_path, class: 'btn btn-sm m-1 bg-neutral' %>
 </div>
 
+<%= render 'shared/category_legend' %>
+
 <div class="text-center">
   <button id="toggle-posted-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_posted_workspaces_button') %></button>
   <button id="toggle-liked-workspaces" class="btn btn-sm m-1 bg-neutral"><%= t('profiles.show.toggle_liked_workspaces_button') %></button>

@@ -9,6 +9,8 @@
 
 <h1 class="text-center my-10 -mt-5"><%= t('workspaces.list.title') %></h1>
 
+<%= render 'shared/category_legend' %>
+
 <%= search_form_for @q, url: search_result_workspaces_path do |f| %>
   <div class="flex justify-center"> 
     <div class="relative flex rounded-md">
