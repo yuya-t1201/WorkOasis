@@ -11,7 +11,8 @@ module.exports = {
         main: ['Noto Serif JP', 'selif']
       },
       animation: {
-        "text-focus-in": "text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530)   both"
+        "text-focus-in": "text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530)   both",
+        "heartbeat": "heartbeat 1.5s ease  infinite both"
       },
       keyframes: {
         "text-focus-in": {
@@ -24,7 +25,31 @@ module.exports = {
             opacity: "10"
           }
 
+        },
+        "heartbeat": {
+          "0%": {
+            transform: "scale(1)",
+            "transform-origin": "center center",
+            "animation-timing-function": "ease-out"
+          },
+          "10%": {
+            transform: "scale(.91)",
+            "animation-timing-function": "ease-in"
+          },
+          "17%": {
+            transform: "scale(.98)",
+            "animation-timing-function": "ease-out"
+          },
+          "33%": {
+            transform: "scale(.87)",
+            "animation-timing-function": "ease-in"
+          },
+          "45%": {
+            transform: "scale(1)",
+            "animation-timing-function": "ease-out"
+          }
         }
+
       },
       colors: {
         red: {
