@@ -102,5 +102,6 @@ class Workspace < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user_id)
   end
+
 end
 

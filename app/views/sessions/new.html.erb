@@ -5,6 +5,9 @@
       <div class="mt-6">
         <%= render 'login_form' %>
       </div>
+      <div class="text-center mt-4">
+      <%= link_to 'ゲストでログインする', '/guest_login', data: { turbo_method: :post }  %>
+      </div>
     </div>
   </div>
 </section>

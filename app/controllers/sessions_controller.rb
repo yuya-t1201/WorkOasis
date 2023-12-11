@@ -17,5 +17,18 @@ class SessionsController < ApplicationController
       logout
       redirect_to login_path, notice: 'ログアウトしました。'
     end
+
+    # user_sessions_controller.rb
+    def guest_login
+      @guest_user = User.create(
+      name: 'ゲスト',
+      email: SecureRandom.alphanumeric(10) + "@email.com",
+      password: 'password',
+      password_confirmation: 'password'
+      )
+      auto_login(@guest_user)
+      redirect_to workspaces_path, success: 'ゲストとしてログインしました'
+    end
+
 end
   
