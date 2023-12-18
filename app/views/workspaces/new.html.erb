@@ -1,27 +1,29 @@
-<nav class="mt-8 -mb-8 ml-8">
-    <ul class="list-none p-0">
-      <li class="mb-4">
-        <i class="fas fa-arrow-left text-black mr-2"></i>
-        <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700", data: {turbo: false}  %>
-      </li>
-      <li class="mb-4">
-        <i class="fas fa-arrow-left text-black mr-2"></i>
-        <%= link_to t('workspaces.show.back_to_list'), list_workspaces_path, class: "text-black hover:text-indigo-700" %>
-      </li>
-    </ul>
-</nav>
+<div class="container mx-auto px-4 h-full mb-0">
+  <nav class="mt-8 -mb-8 ">
+      <ul class="list-none p-0">
+        <li class="mb-4">
+          <i class="fas fa-arrow-left text-black mr-2"></i>
+          <%= link_to t('workspaces.show.back_to_map'), workspaces_path, class: "text-black hover:text-indigo-700", data: {turbo: false}  %>
+        </li>
+        <li class="mb-4">
+          <i class="fas fa-arrow-left text-black mr-2"></i>
+          <%= link_to t('workspaces.show.back_to_list'), list_workspaces_path, class: "text-black hover:text-indigo-700" %>
+        </li>
+      </ul>
+  </nav>
 
-<div class="flex items-center justify-center ">
-  <div class="w-full max-w-md mt-16">
-    <h1 class="text-3xl font-bold text-center mb-4 text-gray-800"><%= t('workspaces.new.title') %></h1>
-    <%= form_with model: @workspace,  data: { turbo: false } do |f| %>
-      
-      <%= render 'form_fields', f: f %>
-      
-      <div class="my-4">
-        <%= f.submit t('workspaces.new.submit_button'), class: "btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white" %>
-      </div>
-    <% end %>
+  <div class="flex items-center justify-center ">
+    <div class="w-full max-w-md mt-16">
+      <h1 class="text-3xl font-bold text-center mb-4 text-gray-800"><%= t('workspaces.new.title') %></h1>
+      <%= form_with model: @workspace,  data: { turbo: false } do |f| %>
+        
+        <%= render 'form_fields', f: f %>
+        
+        <div class="my-4">
+          <%= f.submit t('workspaces.new.submit_button'), class: "btn btn-secondary px-4 py-2 rounded hover:bg-blue-600 text-white" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
