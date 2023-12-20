@@ -65,4 +65,12 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.before(:each, type: :system) do
+    driven_by(:selenium_chrome_headless)
+    # driven_by(:selenium_chrome)
+    # driven_by(:rack_test)
+  end
+  config.include LoginSupport
+  config.include FactoryBot::Syntax::Methods
 end

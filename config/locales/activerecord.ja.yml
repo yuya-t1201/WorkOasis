@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました": %{errors}'
     models:
       authentication: '認証情報'
       like: 'いいね'
