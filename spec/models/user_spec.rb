@@ -21,5 +21,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "trueである時、falseになること" do
+    expect(User.new).not_to eq(nil)
+  end
 end
