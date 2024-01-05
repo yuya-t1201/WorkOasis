@@ -2,9 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User Authentication', type: :system do
-  it 'allows a user to log in' do
-    # Create a user directly without using FactoryBot
+RSpec.describe 'ログイン機能', type: :system do
+  it 'ログインができる' do
     user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password123', password_confirmation: 'password123')
 
     visit login_path
@@ -15,10 +14,9 @@ RSpec.describe 'User Authentication', type: :system do
     click_button 'ログイン'
 
     expect(current_path).to eq(workspaces_path)
-    # Add more expectations based on the successful login behavior if needed
   end
 
-  it 'allows a user to register' do
+  it 'ユーザーを新規登録し、その後ログインできる' do
     visit new_user_path
 
     fill_in 'user_name', with: 'John Doe'
@@ -29,6 +27,38 @@ RSpec.describe 'User Authentication', type: :system do
     click_button 'さあ、始めよう！'
 
     expect(current_path).to eq(login_path)
+
+    visit login_path
+
+    fill_in 'user_email',  with: 'john@example.com'
+    fill_in 'user_password', with: 'password123'
+
+    click_button 'ログイン'
+    expect(current_path).to eq(workspaces_path)
+
     # Add more expectations based on the successful registration behavior if needed
   end
+
+  it '登録した情報とフォーム内容が違う場合、ログインに失敗する' do
+    visit new_user_path
+
+    fill_in 'user_name', with: 'John Doe'
+    fill_in 'user_email', with: 'john@example.com'
+    fill_in 'user_password', with: 'password123'
+    fill_in 'user_password_confirmation', with: 'password123'
+
+    click_button 'さあ、始めよう！'
+
+    expect(current_path).to eq(login_path)
+
+    visit login_path
+
+    fill_in 'user_email',  with: 'john@example.co'
+    fill_in 'user_password', with: 'password123'
+
+    click_button 'ログイン'
+    expect(page).to have_content('ログインできませんでした')
+    expect(current_path).to eq(login_path)
+  end
+
 end
