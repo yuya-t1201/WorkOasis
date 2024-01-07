@@ -17,8 +17,8 @@ RSpec.describe 'ワークスペース新規登録', type: :system do
 
         fill_in 'workspace_title', with: "国立国会図書館"
         fill_in 'workspace_address', with: "東京都千代田区永田町１丁目１０−１"
-        choose  'library'
-        check 'workspace_tag_ids_1'
+
+        
         select '0~500', from: 'workspace_price'
         fill_in 'workspace_text', with: "最高です"
         click_button '登録する'
